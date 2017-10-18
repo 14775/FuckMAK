@@ -1,0 +1,11 @@
+package gameModes;
+
+import game.Generation;
+
+public class GameOfLife {
+
+	public static void main(String[] args) {
+		Generation newGen = Generation.GenerationConf1();
+	}
+
+}
