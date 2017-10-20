@@ -1,92 +1,108 @@
 package game;
 
 public class Generation {
-	private Cell[][] world;
+	private Cell[][] grid;
+	private int dimension;
+	private long generationNumber;
 
-	private Generation() {
-	};
+	private Generation(int dimension) {
+		this.dimension = dimension;
+		createNewGrid();
+		this.generationNumber = 0;
+	}
 
-	public static Generation GenerationConf1() {
-		Generation retGen = new Generation();
-		retGen.world = new Cell[40][40];
-		for (int row = 0; row < retGen.world.length; row++) {
-			for (int col = 0; col < retGen.world[row].length; col++) {
-				Cell newCell = new Cell(row, col);
-				if (row == 18 | row == 19) {
-					if (col == 18 | col == 19 | col == 21 | col == 22)
-						newCell.lives();
-				}
-				if (row == 20) {
-					if (col == 19 | col == 21) {
-						newCell.lives();
-					}
-				}
-				if (row == 21 | row == 22) {
-					if (col == 17 | col == 19 | col == 21 | col == 23)
-						newCell.lives();
-				}
-				if (row == 23) {
-					if (col == 17 | col == 18 | col == 22 | col == 23) {
-						newCell.lives();
-					}
-				}
-				retGen.world[row][col] = newCell;
+	public void createNewGrid() {
+		grid = new Cell[dimension][dimension];
+		for (int row = 0; row < grid.length; row++) {
+			for (int col = 0; col < grid[row].length; col++) {
+				grid[row][col] = new Cell(row, col);
 			}
 		}
-		retGen.drawWorld();
+	}
+
+	public void drawGrid() {
+		System.out.print("### (" + generationNumber + ")");
+		System.out.println();
+		for (int row = 0; row < grid.length; row++) {
+			for (int col = 0; col < grid[row].length; col++) {
+				System.out.print(grid[row][col].status() ? '1' : '0');
+			}
+			System.out.println();
+		}
+
+	}
+
+	public void nextGeneration() {
+		Cell[][] newGrid = grid;
+		for (int row = 0; row < newGrid.length; row++) {
+			for (int col = 0; col < newGrid[row].length; col++) {
+				// newGrid[row][col] = isAlive(row, col); //auslagern, wohin? Neue Klasse? ->
+				// anwendung Regel Interface
+			}
+		}
+		grid = newGrid;
+		generationNumber++;
+	}
+
+	public static Generation GenerationConf1() {
+		Generation retGen = new Generation(40);
+		int row;
+		int col;
+		for (row = 18; row <= 23; row++) {
+			for (col = 18; col <= 23; col++) {
+				if (row == 18 || row == 19) {
+					if (col == 18 || col == 19 || col == 21 || col == 22) {
+						retGen.grid[row][col].live();
+					}
+					if (row == 20) {
+						if (col == 19 || col == 21) {
+							retGen.grid[row][col].live();
+						}
+					}
+					if (row == 21 || row == 22) {
+						if (col == 17 || col == 19 || col == 21 || col == 23)
+							retGen.grid[row][col].live();
+					}
+					if (row == 23) {
+						if (col == 17 || col == 18 || col == 22 || col == 23) {
+							retGen.grid[row][col].live();
+						}
+					}
+				}
+			}
+		}
+		retGen.drawGrid();
 		return retGen;
 	};
 
 	public static Generation GenerationConf2() {
-		Generation retGen = new Generation();
-		retGen.world = new Cell[100][100];
-		for (int row = 0; row < retGen.world.length; row++) {
-			for (int col = 0; col < retGen.world[row].length; col++) {
-				Cell newCell = new Cell(row, col);
+		Generation retGen = new Generation(100);
+		for (int row = 0; row < retGen.grid.length; row++) {
+			for (int col = 0; col < retGen.grid[row].length; col++) {
 				boolean even = false;
 				boolean uneven = true;
 				if (row % 2 == 0) {
-					if (even == true) {
-						newCell.lives();
+					if (even) {
+						retGen.grid[row][col].live();
 					} else {
-						newCell.dies();
+						retGen.grid[row][col].die();
 					}
 					even = !even;
 				} else {
-					if (uneven = true) {
-						newCell.lives();
+					if (uneven) {
+						retGen.grid[row][col].live();
 					} else {
-						newCell.dies();
+						retGen.grid[row][col].die();
 					}
+					uneven = !uneven;
 				}
-				;
-				retGen.world[row][col] = newCell;
 			}
 		}
-		retGen.drawWorld();
 		return retGen;
 	};
 
 	public static Generation GenerationConf3() {
-		Generation retGen = new Generation();
-		retGen.world = new Cell[300][300];
-		for (int row = 0; row < retGen.world.length; row++) {
-			for (int col = 0; col < retGen.world[row].length; col++) {
-
-				retGen.world[row][col] = new Cell(row, col);
-			}
-		}
-		retGen.drawWorld();
+		Generation retGen = new Generation(300);
 		return retGen;
 	};
-
-	public void drawWorld() {
-		for (int row = 0; row < world.length; row++) {
-			for (int col = 0; col < world[row].length; col++) {
-				System.out.print(world[row][col].isAlive() ? '#' : '0');
-			}
-			System.out.println();
-		}
-		// TODO Print out turn number
-	}
 }
