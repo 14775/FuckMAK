@@ -77,11 +77,12 @@ public class Generation {
 
 	public static Generation GenerationConf2() {
 		Generation retGen = new Generation(100);
+		boolean even = false;
+		boolean uneven = true;
+//		TODO See if second boolean can be removed
 		for (int row = 0; row < retGen.grid.length; row++) {
 			for (int col = 0; col < retGen.grid[row].length; col++) {
-				boolean even = false;
-				boolean uneven = true;
-				if (row % 2 == 0) {
+				if ((row % 2) == 0) {
 					if (even) {
 						retGen.grid[row][col].live();
 					} else {
@@ -98,11 +99,13 @@ public class Generation {
 				}
 			}
 		}
+		retGen.drawGrid();
 		return retGen;
 	};
 
 	public static Generation GenerationConf3() {
 		Generation retGen = new Generation(300);
+		retGen.drawGrid();
 		return retGen;
 	};
 }
