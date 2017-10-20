@@ -49,7 +49,7 @@ public class Generation {
 		int row;
 		int col;
 		for (row = 18; row <= 23; row++) {
-			for (col = 1; col <= 23; col++) {
+			for (col = 17; col <= 23; col++) {
 				if (row == 18 || row == 19) {
 					if (col == 18 || col == 19 || col == 21 || col == 22) {
 						retGen.grid[row][col].live();
