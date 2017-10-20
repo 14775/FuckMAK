@@ -1,0 +1,68 @@
+package game;
+
+public class GenerationFactory {
+	public static Generation GenerationConf1() {
+		Generation retGen = new Generation(40);
+		int row;
+		int col;
+		for (row = 18; row <= 23; row++) {
+			for (col = 17; col <= 23; col++) {
+				if (row == 18 || row == 19) {
+					if (col == 18 || col == 19 || col == 21 || col == 22) {
+						retGen.grid[row][col].live();
+					}
+				}
+				if (row == 20) {
+					if (col == 19 || col == 21) {
+						retGen.grid[row][col].live();
+					}
+				}
+				if (row == 21 || row == 22) {
+					if (col == 17 || col == 19 || col == 21 || col == 23)
+						retGen.grid[row][col].live();
+				}
+				if (row == 23) {
+					if (col == 17 || col == 18 || col == 22 || col == 23)
+						retGen.grid[row][col].live();
+				}
+
+			}
+		}
+		retGen.drawGrid();
+		return retGen;
+	};
+
+	public static Generation GenerationConf2() {
+		Generation retGen = new Generation(100);
+		boolean even = false;
+		boolean uneven = true;
+//		TODO See if second boolean can be removed
+		for (int row = 0; row < retGen.grid.length; row++) {
+			for (int col = 0; col < retGen.grid[row].length; col++) {
+				if ((row % 2) == 0) {
+					if (even) {
+						retGen.grid[row][col].live();
+					} else {
+						retGen.grid[row][col].die();
+					}
+					even = !even;
+				} else {
+					if (uneven) {
+						retGen.grid[row][col].live();
+					} else {
+						retGen.grid[row][col].die();
+					}
+					uneven = !uneven;
+				}
+			}
+		}
+		retGen.drawGrid();
+		return retGen;
+	};
+
+	public static Generation GenerationConf3() {
+		Generation retGen = new Generation(300);
+		retGen.drawGrid();
+		return retGen;
+	};
+}
