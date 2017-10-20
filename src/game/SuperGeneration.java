@@ -1,22 +1,23 @@
 package game;
 
-public  class SuperGeneration{
+public class SuperGeneration {
 	protected Cell[][] grid;
 	private int dimension;
 	private long generationNumber;
 
-	protected SuperGeneration(int dimension,int gridType) {
+	protected SuperGeneration(int dimension, int gridType) {
 		this.dimension = dimension;
-		this.createNewGrid();
+		this.createNewGrid(gridType);
 		this.generationNumber = 0;
 	}
-	
-	
-	protected void createNewGrid() {
-		grid = new Cell[dimension][dimension];
-		for (int row = 0; row < grid.length; row++) {
-			for (int col = 0; col < grid[row].length; col++) {
-				grid[row][col] = new Cell(row, col);
+// TODO Create & Draw Grid should have its own class
+	protected void createNewGrid(int gridType) {
+		if (gridType == 0) {
+			grid = new Cell[dimension][dimension];
+			for (int row = 0; row < grid.length; row++) {
+				for (int col = 0; col < grid[row].length; col++) {
+					grid[row][col] = new Cell(row, col);
+				}
 			}
 		}
 	}
