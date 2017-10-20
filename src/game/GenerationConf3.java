@@ -1,9 +1,11 @@
 package game;
 
-public class GenerationConf3 extends PrimeGeneration implements Generation{
-
-	public PrimeGeneration initGen() {
-		PrimeGeneration retGen = GeneratePrimeGen(300);
-		retGen.drawGrid();
-		return retGen;
+public class GenerationConf3 extends SuperGeneration implements Generation {
+	public GenerationConf3(int dimension, int gridType) {
+		super(dimension, gridType);
+		this.drawGrid();
+	}
+	public void drawGrid() {
+		super.drawGrid();
+	};
 }

@@ -1,6 +1,8 @@
 package game;
 
 interface Generation {
-	public PrimeGeneration initGen();
+	public void drawGrid();
+//	public SuperGeneration initGenGrid1();
+//	public SuperGeneration initGenGrid2();
 
 }

@@ -1,32 +1,34 @@
 package game;
 
-public class GenerationConf2 extends PrimeGeneration implements Generation{
-	public PrimeGeneration initGen() {
-		PrimeGeneration retGen = GeneratePrimeGen(100);
+public class GenerationConf2 extends SuperGeneration implements Generation {
+	public GenerationConf2(int dimension, int gridType) {
+		super(dimension, gridType);
 		boolean even = false;
 		boolean uneven = true;
-//		TODO See if second boolean can be removed
-		for (int row = 0; row < retGen.grid.length; row++) {
-			for (int col = 0; col < retGen.grid[row].length; col++) {
+		// TODO See if second boolean can be removed
+		for (int row = 0; row < this.grid.length; row++) {
+			for (int col = 0; col < this.grid[row].length; col++) {
 				if ((row % 2) == 0) {
 					if (even) {
-						retGen.grid[row][col].live();
+						this.grid[row][col].live();
 					} else {
-						retGen.grid[row][col].die();
+						this.grid[row][col].die();
 					}
 					even = !even;
 				} else {
 					if (uneven) {
-						retGen.grid[row][col].live();
+						this.grid[row][col].live();
 					} else {
-						retGen.grid[row][col].die();
+						this.grid[row][col].die();
 					}
 					uneven = !uneven;
 				}
 			}
 		}
-		retGen.drawGrid();
-		return retGen;
+		this.drawGrid();
 	};
 
+	public void drawGrid() {
+		super.drawGrid();
+	};
 }

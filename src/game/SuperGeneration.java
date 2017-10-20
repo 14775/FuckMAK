@@ -1,17 +1,14 @@
 package game;
 
-public  class PrimeGeneration{
+public  class SuperGeneration{
 	protected Cell[][] grid;
 	private int dimension;
 	private long generationNumber;
 
-	private PrimeGeneration() {};
-	protected PrimeGeneration GeneratePrimeGen(int dimension) {
-		PrimeGeneration retPrimeGen = new PrimeGeneration();
-		retPrimeGen.dimension = dimension;
-		retPrimeGen.createNewGrid();
-		retPrimeGen.generationNumber = 0;
-		return retPrimeGen;
+	protected SuperGeneration(int dimension,int gridType) {
+		this.dimension = dimension;
+		this.createNewGrid();
+		this.generationNumber = 0;
 	}
 	
 	
