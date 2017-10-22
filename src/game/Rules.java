@@ -1,5 +1,8 @@
 package game;
 
+/*
+ *  
+*/
 public interface Rules {
 	public boolean mustStayAlive(int numberOfNeighbors);
 

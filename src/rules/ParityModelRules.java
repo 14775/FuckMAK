@@ -6,14 +6,15 @@ import game.Rules;
  * based on the number of its alive neighbors.
 */
 
-public class GameOfLifeRules implements Rules {
+public class ParityModelRules implements Rules {
 
 	public boolean mustStayAlive(int numberOfNeighbors) {
-		return numberOfNeighbors == 2 || numberOfNeighbors == 3;
+		return numberOfNeighbors % 2 == 0;
 
 	}
 
 	public boolean mustBeBorn(int numberOfNeighbors) {
-		return numberOfNeighbors == 3;
+		return numberOfNeighbors % 2 == 0;
 	}
+
 }
