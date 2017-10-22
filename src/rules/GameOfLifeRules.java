@@ -3,7 +3,7 @@ package rules;
 import game.Rules;
 /*
  * Implements <<Rules>> and defines mustStayAlive and mustBeBorn for a certain cell
- * based on the number of its alive neighbors.
+ * based on the number of its alive neighbors. Is used in XXX for "isAlive" Check...
 */
 
 public class GameOfLifeRules implements Rules {
