@@ -8,12 +8,12 @@ import game.Rules;
 
 public class GameOfLifeRules implements Rules {
 
-	public boolean mustStayAlive(int numberOfNeighbors) {
-		return numberOfNeighbors == 2 || numberOfNeighbors == 3;
+	public boolean mustStayAlive(int numberOfAliveNeighbors) {
+		return numberOfAliveNeighbors == 2 || numberOfAliveNeighbors == 3;
 
 	}
 
-	public boolean mustBeBorn(int numberOfNeighbors) {
-		return numberOfNeighbors == 3;
+	public boolean mustBeBorn(int numberOfAliveNeighbors) {
+		return numberOfAliveNeighbors == 3;
 	}
 }

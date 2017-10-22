@@ -1,7 +1,7 @@
 package game;
 
 public class SuperGeneration {
-	protected Cell[][] grid;
+	protected Cells[][] grid;
 	private int dimension;
 	private long generationNumber;
 
@@ -13,10 +13,10 @@ public class SuperGeneration {
 // TODO Create & Draw Grid should have its own class
 	protected void createNewGrid(int gridType) {
 		if (gridType == 0) {
-			grid = new Cell[dimension][dimension];
+			grid = new Cells[dimension][dimension];
 			for (int row = 0; row < grid.length; row++) {
 				for (int col = 0; col < grid[row].length; col++) {
-					grid[row][col] = new Cell(row, col);
+					grid[row][col] = new Cells(row, col);
 				}
 			}
 		}
@@ -35,7 +35,7 @@ public class SuperGeneration {
 	}
 
 	protected void nextGeneration() {
-		Cell[][] newGrid = grid;
+		Cells[][] newGrid = grid;
 		for (int row = 0; row < newGrid.length; row++) {
 			for (int col = 0; col < newGrid[row].length; col++) {
 				// newGrid[row][col] = isAlive(row, col); //auslagern, wohin? Neue Klasse? ->
