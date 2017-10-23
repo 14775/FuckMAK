@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.Cells;
+import gridTypes.Grid;
 
 public class MooreCell extends Cells {
 	public MooreCell(int posX, int posY) {
