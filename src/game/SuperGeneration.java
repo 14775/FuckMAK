@@ -14,7 +14,6 @@ public class SuperGeneration {
 		this.dimension = dimension;
 		this.grid = factory.createGrid(gridType, dimension);
 		this.generationNumber = 0;
-		this.generationGridType = gridType;
 	}
 
 	protected void drawGrid() {
