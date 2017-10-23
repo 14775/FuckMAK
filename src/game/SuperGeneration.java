@@ -10,7 +10,8 @@ public class SuperGeneration {
 		this.createNewGrid(gridType);
 		this.generationNumber = 0;
 	}
-// TODO Create & Draw Grid should have its own class
+
+	// TODO Create & Draw Grid should have its own class
 	protected void createNewGrid(int gridType) {
 		if (gridType == 0) {
 			grid = new Cells[dimension][dimension];
@@ -27,7 +28,7 @@ public class SuperGeneration {
 		System.out.println();
 		for (int row = 0; row < grid.length; row++) {
 			for (int col = 0; col < grid[row].length; col++) {
-				System.out.print(grid[row][col].status() ? '1' : '0');
+				System.out.print(grid[row][col].isAlive() ? '1' : '0');
 			}
 			System.out.println();
 		}
@@ -38,7 +39,8 @@ public class SuperGeneration {
 		Cells[][] newGrid = grid;
 		for (int row = 0; row < newGrid.length; row++) {
 			for (int col = 0; col < newGrid[row].length; col++) {
-				// newGrid[row][col] = isAlive(row, col); //auslagern, wohin? Neue Klasse? ->
+				// newGrid[row][col] = isAlive(row, col); //auslagern, wohin?
+				// Neue Klasse? ->
 				// anwendung Regel Interface
 			}
 		}
