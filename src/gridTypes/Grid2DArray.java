@@ -31,9 +31,4 @@ public class Grid2DArray implements Grid {
 		return this.length;
 	}
 
-	@Override
-	public String getGridType() {
-		return "2DArray";
-	}
-
 };

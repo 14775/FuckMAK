@@ -24,8 +24,4 @@ public class GridHash implements Grid {
 		return this.length;
 	}
 
-	@Override
-	public String getGridType() {
-		return "Hash";
-	}
 }

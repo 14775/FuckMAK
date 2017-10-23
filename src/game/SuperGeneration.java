@@ -7,12 +7,14 @@ public class SuperGeneration {
 	protected Grid grid;
 	private int dimension;
 	private long generationNumber;
+	private String generationGridType;
 
 	protected SuperGeneration(String gridType, int dimension) {
 		GridFactory factory = new GridFactory();
 		this.dimension = dimension;
 		this.grid = factory.createGrid(gridType, dimension);
 		this.generationNumber = 0;
+		this.generationGridType = gridType;
 	}
 
 	protected void drawGrid() {
@@ -28,14 +30,15 @@ public class SuperGeneration {
 	}
 
 	protected void nextGeneration() {
-		// Cells[][] newGrid = grid;
-		// for (int row = 0; row < newGrid.length; row++) {
-		// for (int col = 0; col < newGrid[row].length; col++) {
-		// newGrid[row][col] = isAlive(row, col); //auslagern, wohin?
-		// Neue Klasse? ->
-		// anwendung Regel Interface
-		// }
-		// grid = newGrid;
-		generationNumber++;
+		Grid newGrid = this.grid;
+		for (int row = 0; row < newGrid.getGridLength(); row++) {
+			for (int col = 0; col < newGrid.getGridLength(); col++) {
+				// newGrid[row][col] = isAlive(row, col); //auslagern, wohin?
+				// Neue Klasse? ->
+				// anwendung Regel Interface
+			}
+			grid = newGrid;
+			generationNumber++;
+		}
 	}
 }
