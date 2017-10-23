@@ -59,8 +59,7 @@ public class SuperGeneration {
 	}
 
 	public void nextGeneration() {
-		Cells[][] newGrid = grid;
-		System.out.println("Ich wurde aufgerufen");
+		this.newGrid = grid;
 		for (int row = 0; row < newGrid.length; row++) {
 			for (int col = 0; col < newGrid[row].length; col++) {
 				if (newGrid[row][col].isAlive()) {
@@ -80,11 +79,9 @@ public class SuperGeneration {
 
 	public int getNumberOfAliveNeighbors(List<Number> neighbors) {
 		int numberOfAliveNeighbors = 0;
-		for (int i = 0; i < (neighbors.size() - 1); i++) {
-			for (int j = 1; j < (neighbors.size()); i++) {
-				if (newGrid[i][j].isAlive()) {
-					numberOfAliveNeighbors++;
-				}
+		for (int i = 0; i <= (neighbors.size() - 2); i++) {
+			if (newGrid[(int) neighbors.get(i)][(int) neighbors.get(i + 1)].isAlive()) {
+				numberOfAliveNeighbors++;
 			}
 		}
 		return numberOfAliveNeighbors;
