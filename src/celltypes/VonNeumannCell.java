@@ -10,6 +10,7 @@ public class VonNeumannCell extends Cells {
 		super(posX, posY);
 	}
 
+	@Override
 	public List<Number> neighbors() {
 		ArrayList<Number> neighbors = new ArrayList<>();
 

@@ -1,29 +1,52 @@
 package game;
 
-public class SuperGeneration {
-	protected Cells[][] grid;
-	private int dimension;
-	private long generationNumber;
+import java.util.List;
 
-	protected SuperGeneration(int dimension, int gridType) {
+import celltypes.MooreCell;
+import celltypes.VonNeumannCell;
+import rules.GameOfLifeRules;
+import rules.ParityModelRules;
+
+public class SuperGeneration {
+	public Cells[][] grid;
+	public Rules rules;
+	private int dimension;
+	protected long generationNumber;
+	protected Cells[][] newGrid;
+
+	public SuperGeneration(int dimension, int gridType, int rules) {
 		this.dimension = dimension;
-		this.createNewGrid(gridType);
 		this.generationNumber = 0;
+		this.createNewGrid(gridType);
+		if (rules == 0)
+			this.rules = new GameOfLifeRules();
+		if (rules == 1)
+			this.rules = new ParityModelRules();
+
 	}
 
 	// TODO Create & Draw Grid should have its own class
+	// Gridtype ist in diesem Fall der Zellentyp!!! 0 = Moore ; 1 = vonNeumann
 	protected void createNewGrid(int gridType) {
 		if (gridType == 0) {
-			grid = new Cells[dimension][dimension];
+			grid = new MooreCell[dimension][dimension];
 			for (int row = 0; row < grid.length; row++) {
 				for (int col = 0; col < grid[row].length; col++) {
-					grid[row][col] = new Cells(row, col);
+					grid[row][col] = new MooreCell(row, col);
+				}
+			}
+		}
+		if (gridType == 1) {
+			grid = new VonNeumannCell[dimension][dimension];
+			for (int row = 0; row < grid.length; row++) {
+				for (int col = 0; col < grid[row].length; col++) {
+					grid[row][col] = new VonNeumannCell(row, col);
 				}
 			}
 		}
 	}
 
-	protected void drawGrid() {
+	public void drawGrid() {
 		System.out.print("### (" + generationNumber + ")");
 		System.out.println();
 		for (int row = 0; row < grid.length; row++) {
@@ -35,16 +58,36 @@ public class SuperGeneration {
 
 	}
 
-	protected void nextGeneration() {
+	public void nextGeneration() {
 		Cells[][] newGrid = grid;
+		System.out.println("Ich wurde aufgerufen");
 		for (int row = 0; row < newGrid.length; row++) {
 			for (int col = 0; col < newGrid[row].length; col++) {
-				// newGrid[row][col] = isAlive(row, col); //auslagern, wohin?
-				// Neue Klasse? ->
-				// anwendung Regel Interface
+				if (newGrid[row][col].isAlive()) {
+					int neighbors = 0;
+					neighbors = getNumberOfAliveNeighbors(newGrid[row][col].neighbors());
+					if (rules.mustStayAlive(neighbors) != true)
+						newGrid[row][col].die();
+					if (rules.mustBeBorn(neighbors))
+						newGrid[row][col].live();
+				}
 			}
 		}
 		grid = newGrid;
 		generationNumber++;
+
 	}
+
+	public int getNumberOfAliveNeighbors(List<Number> neighbors) {
+		int numberOfAliveNeighbors = 0;
+		for (int i = 0; i < (neighbors.size() - 1); i++) {
+			for (int j = 1; j < (neighbors.size()); i++) {
+				if (newGrid[i][j].isAlive()) {
+					numberOfAliveNeighbors++;
+				}
+			}
+		}
+		return numberOfAliveNeighbors;
+	}
+
 }

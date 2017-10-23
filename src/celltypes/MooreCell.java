@@ -10,6 +10,7 @@ public class MooreCell extends Cells {
 		super(posX, posY);
 	}
 
+	@Override
 	public List<Number> neighbors() {
 		ArrayList<Number> neighbors = new ArrayList<>();
 		for (int k = -1; k < 2; k++) {
