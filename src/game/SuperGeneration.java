@@ -8,6 +8,7 @@ import rules.GameOfLifeRules;
 import rules.ParityModelRules;
 
 public class SuperGeneration {
+
 	protected Rules rules;
 	protected Grid grid;
 	private int dimension;
@@ -19,6 +20,7 @@ public class SuperGeneration {
 		this.dimension = dimension;
 		this.grid = factory.createGrid(gridType, dimension, cellType);
 		this.generationNumber = 0;
+
 		if (rules == 0)
 			this.rules = new GameOfLifeRules();
 		if (rules == 1)
@@ -55,13 +57,14 @@ public class SuperGeneration {
 		grid = newGrid;
 		generationNumber++;
 
+
 	}
 
 	public int getNumberOfAliveNeighbors(List<Number> neighbors) {
 		int numberOfAliveNeighbors = 0;
 		for (int i = 0; i <= (neighbors.size() - 2); i++) {
 			// Am Rand abschneiden
-			// TODO komplexität reduzieren!
+			// TODO komplexitÃ¤t reduzieren!
 			if ((int) neighbors.get(i) > -1 && (int) neighbors.get(i + 1) > -1 && (int) neighbors.get(i) < dimension
 					&& (int) neighbors.get(i + 1) < dimension) {
 				if (newGrid.getCell((int) neighbors.get(i), (int) neighbors.get(i + 1)).isAlive()) {
