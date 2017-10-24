@@ -1,20 +1,20 @@
 package game;
 
 public class GenerationConf2 extends SuperGeneration {
-	public GenerationConf2(int dimension, int gridType, int rule) {
-		super(dimension, gridType, rule);
+	public GenerationConf2(int dimension, String gridType, int rule, String cellType) {
+		super(dimension, gridType, rule, cellType);
 		boolean lives;
-		for (int row = 0; row < this.grid.length; row++) {
+		for (int row = 0; row < this.grid.getGridLength(); row++) {
 			if (row % 2 == 0) {
 				lives = false;
 			} else {
 				lives = true;
 			}
-			for (int col = 0; col < this.grid[row].length; col++) {
+			for (int col = 0; col < this.grid.getGridLength(); col++) {
 				if (lives) {
-					this.grid[row][col].live();
+					this.grid.getCell(row, col).live();
 				} else {
-					this.grid[row][col].die();
+					this.grid.getCell(row, col).die();
 				}
 				lives = !lives;
 			}

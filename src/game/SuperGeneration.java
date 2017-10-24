@@ -2,22 +2,25 @@ package game;
 
 import java.util.List;
 
-import celltypes.MooreCell;
-import celltypes.VonNeumannCell;
+import gridTypes.Grid;
+import gridTypes.GridFactory;
 import rules.GameOfLifeRules;
 import rules.ParityModelRules;
 
 public class SuperGeneration {
-	public Cells[][] grid;
-	public Rules rules;
+
+	protected Rules rules;
+	protected Grid grid;
 	private int dimension;
 	protected long generationNumber;
-	protected Cells[][] newGrid;
+	private Grid newGrid;
 
-	public SuperGeneration(int dimension, int gridType, int rules) {
+	public SuperGeneration(int dimension, String gridType, int rules, String cellType) {
+		GridFactory factory = new GridFactory();
 		this.dimension = dimension;
+		this.grid = factory.createGrid(gridType, dimension, cellType);
 		this.generationNumber = 0;
-		this.createNewGrid(gridType);
+
 		if (rules == 0)
 			this.rules = new GameOfLifeRules();
 		if (rules == 1)
@@ -25,33 +28,12 @@ public class SuperGeneration {
 
 	}
 
-	// TODO Create & Draw Grid should have its own class
-	// Gridtype ist in diesem Fall der Zellentyp!!! 0 = Moore ; 1 = vonNeumann
-	protected void createNewGrid(int gridType) {
-		if (gridType == 0) {
-			grid = new MooreCell[dimension][dimension];
-			for (int row = 0; row < grid.length; row++) {
-				for (int col = 0; col < grid[row].length; col++) {
-					grid[row][col] = new MooreCell(row, col);
-				}
-			}
-		}
-		if (gridType == 1) {
-			grid = new VonNeumannCell[dimension][dimension];
-			for (int row = 0; row < grid.length; row++) {
-				for (int col = 0; col < grid[row].length; col++) {
-					grid[row][col] = new VonNeumannCell(row, col);
-				}
-			}
-		}
-	}
-
 	public void drawGrid() {
 		System.out.print("### (" + generationNumber + ")");
 		System.out.println();
-		for (int row = 0; row < grid.length; row++) {
-			for (int col = 0; col < grid[row].length; col++) {
-				System.out.print(grid[row][col].isAlive() ? '1' : '0');
+		for (int row = 0; row < grid.getGridLength(); row++) {
+			for (int col = 0; col < grid.getGridLength(); col++) {
+				System.out.print(grid.getCell(row, col).isAlive() ? '1' : '0');
 			}
 			System.out.println();
 		}
@@ -59,18 +41,18 @@ public class SuperGeneration {
 	}
 
 	public void nextGeneration() {
-		this.newGrid = grid;
-		for (int row = 0; row < newGrid.length; row++) {
-			for (int col = 0; col < newGrid[row].length; col++) {
-				if (newGrid[row][col].isAlive()) {
-					int neighbors = 0;
-					neighbors = getNumberOfAliveNeighbors(newGrid[row][col].neighbors());
-					if (rules.mustStayAlive(neighbors) != true)
-						newGrid[row][col].die();
-					if (rules.mustBeBorn(neighbors))
-						newGrid[row][col].live();
-				}
+		newGrid = grid;
+		for (int row = 0; row < newGrid.getGridLength(); row++) {
+			for (int col = 0; col < newGrid.getGridLength(); col++) {
+
+				int neighbors = 0;
+				neighbors = getNumberOfAliveNeighbors(newGrid.getCell(row, col).neighbors());
+				if (!rules.mustStayAlive(neighbors))
+					newGrid.getCell(row, col).die();
+				if (rules.mustBeBorn(neighbors))
+					newGrid.getCell(row, col).live();
 			}
+
 		}
 		grid = newGrid;
 		generationNumber++;
@@ -81,15 +63,23 @@ public class SuperGeneration {
 		int numberOfAliveNeighbors = 0;
 		for (int i = 0; i <= (neighbors.size() - 2); i++) {
 			// Am Rand abschneiden
-			// TODO komplexität reduzieren!
+			// TODO komplexitÃ¤t reduzieren!
 			if ((int) neighbors.get(i) > -1 && (int) neighbors.get(i + 1) > -1 && (int) neighbors.get(i) < dimension
 					&& (int) neighbors.get(i + 1) < dimension) {
-				if (newGrid[(int) neighbors.get(i)][(int) neighbors.get(i + 1)].isAlive()) {
+				if (newGrid.getCell((int) neighbors.get(i), (int) neighbors.get(i + 1)).isAlive()) {
 					numberOfAliveNeighbors++;
 				}
 			}
 		}
 		return numberOfAliveNeighbors;
+	}
+
+	public Rules getRules() {
+		return rules;
+	}
+
+	public void setRules(Rules rules) {
+		this.rules = rules;
 	}
 
 }
