@@ -1,14 +1,18 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 class testGrid {
 
+	@Before
+	void setup() {
+
+	}
+
 	@Test
 	void test() {
-		fail("Not yet implemented");
+
 	}
 
 }
