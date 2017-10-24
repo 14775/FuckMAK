@@ -1,8 +1,8 @@
 package game;
 
 public class GenerationConf1 extends SuperGeneration {
-	public GenerationConf1(String gridType, int dimension) {
-		super(gridType, dimension);
+	public GenerationConf1(int dimension, String gridType, int rule, String cellType) {
+		super(dimension, gridType, rule, cellType);
 		int row;
 		int col;
 		for (row = 18; row <= 23; row++) {
@@ -30,9 +30,11 @@ public class GenerationConf1 extends SuperGeneration {
 		}
 		this.drawGrid();
 	};
+
 	public void drawGrid() {
 		super.drawGrid();
 	};
+
 	// public SuperGeneration initGen() {
 	// SuperGeneration retGen = GeneratePrimeGen(40);
 	// int row;

@@ -2,10 +2,10 @@ package gridTypes;
 
 import game.Cells;
 
-public class GridHash implements Grid {
+public class GridHashMap implements Grid {
 	private int length;
 
-	public GridHash(int Dimension) {
+	public GridHashMap(int Dimension, String cellType) {
 	};
 
 	@Override

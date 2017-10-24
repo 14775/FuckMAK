@@ -1,8 +1,8 @@
 package game;
 
 public class GenerationConf2 extends SuperGeneration {
-	public GenerationConf2(String gridType, int dimension) {
-		super(gridType, dimension);
+	public GenerationConf2(int dimension, String gridType, int rule, String cellType) {
+		super(dimension, gridType, rule, cellType);
 		boolean lives;
 		for (int row = 0; row < this.grid.getGridLength(); row++) {
 			if (row % 2 == 0) {

@@ -10,13 +10,18 @@ public class VonNeumannCell extends Cells {
 		super(posX, posY);
 	}
 
-	public List<Cells> neighbors() {
-		ArrayList<Cells> neighbors = new ArrayList<>();
+	@Override
+	public List<Number> neighbors() {
+		ArrayList<Number> neighbors = new ArrayList<>();
 
-		neighbors.add(Grid.getCell(positionX, positionY - 1));
-		neighbors.add(Grid.getCell(positionX, positionY + 1));
-		neighbors.add(Grid.getCell(positionX - 1, positionY));
-		neighbors.add(Grid.getCell(positionX + 1, positionY));
+		neighbors.add(positionX);
+		neighbors.add((positionY - 1));
+		neighbors.add(positionX);
+		neighbors.add((positionY + 1));
+		neighbors.add((positionX - 1));
+		neighbors.add(positionY);
+		neighbors.add((positionX + 1));
+		neighbors.add(positionY);
 
 		return neighbors;
 	}

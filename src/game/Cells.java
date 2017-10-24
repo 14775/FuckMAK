@@ -1,5 +1,7 @@
 package game;
 
+import java.util.List;
+
 public class Cells {
 	protected int positionX;
 	protected int positionY;
@@ -37,6 +39,11 @@ public class Cells {
 
 	public boolean isAlive() {
 		return alive;
+	}
+
+	// Will be overwritten by MooreCell or VonNeuMannCell
+	public List<Number> neighbors() {
+		return null;
 	}
 
 }
