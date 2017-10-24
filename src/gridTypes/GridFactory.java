@@ -8,7 +8,7 @@ public class GridFactory {
 		switch (gridType) {
 		case "2DArray":
 			return new Grid2DArray(Dimension, cellType);
-		case "Hash":
+		case "HashMap":
 			return new GridHashMap(Dimension, cellType);
 		default:
 			throw new IllegalArgumentException("There is no matching Grid Type!");
