@@ -79,7 +79,7 @@ public class SuperGeneration {
 
 	public int getNumberOfAliveNeighbors(List<Number> neighbors) {
 		int numberOfAliveNeighbors = 0;
-		for (int i = 0; i <= (neighbors.size() - 2); i++) {
+		for (int i = 0; i < (neighbors.size() - 2); i++) {
 			// Am Rand abschneiden
 			// TODO korrigieren!
 			if ((int) neighbors.get(i) >= 0 && (int) neighbors.get(i + 1) <= dimension) {
