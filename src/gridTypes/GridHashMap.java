@@ -6,6 +6,7 @@ public class GridHashMap implements Grid {
 	private int length;
 
 	public GridHashMap(int Dimension, String cellType) {
+		this.length = Dimension;
 	};
 
 	@Override

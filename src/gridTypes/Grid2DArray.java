@@ -9,7 +9,7 @@ public class Grid2DArray implements Grid {
 	private int length;
 
 	public Grid2DArray(int dimension, String cellType) {
-		// this.length = dimension;
+		this.length = dimension;
 		// this.grid = new Cells[dimension][dimension];
 		// for (int row = 0; row < grid.length; row++) {
 		// for (int col = 0; col < grid[row].length; col++) {
