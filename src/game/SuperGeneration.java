@@ -47,7 +47,7 @@ public class SuperGeneration {
 
 				int neighbors = 0;
 				neighbors = getNumberOfAliveNeighbors(newGrid.getCell(row, col).neighbors());
-				if (rules.mustStayAlive(neighbors) != true)
+				if (!rules.mustStayAlive(neighbors))
 					newGrid.getCell(row, col).die();
 				if (rules.mustBeBorn(neighbors))
 					newGrid.getCell(row, col).live();
