@@ -1,5 +1,6 @@
 package game;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Cells {
@@ -43,7 +44,7 @@ public class Cells {
 
 	// Will be overwritten by MooreCell or VonNeuMannCell
 	public List<Number> neighbors() {
-		return null;
+		return Collections.emptyList();
 	}
 
 }

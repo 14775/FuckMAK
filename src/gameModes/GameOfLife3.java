@@ -9,5 +9,4 @@ public class GameOfLife3 {
 		newGen.nextGeneration();
 		newGen.drawGrid();
 	}
-
 }

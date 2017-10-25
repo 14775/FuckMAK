@@ -2,8 +2,8 @@ package game;
 
 import java.util.List;
 
-import gridTypes.Grid;
-import gridTypes.GridFactory;
+import grid.types.Grid;
+import grid.types.GridFactory;
 import rules.GameOfLifeRules;
 import rules.ParityModelRules;
 

@@ -1,4 +1,4 @@
-package gridTypes;
+package grid.types;
 
 import celltypes.MooreCell;
 import celltypes.VonNeumannCell;

@@ -1,4 +1,4 @@
-package gridTypes;
+package grid.types;
 
 import java.util.HashMap;
 

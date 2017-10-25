@@ -1,4 +1,4 @@
-package gridTypes;
+package grid.types;
 
 public class GridFactory {
 	public GridFactory() {
