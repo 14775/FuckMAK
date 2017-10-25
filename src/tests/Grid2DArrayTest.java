@@ -12,7 +12,7 @@ import game.Cell;
 import grid.types.Grid;
 import grid.types.Grid2DArray;
 
-public class gridTest {
+public class Grid2DArrayTest {
 	Grid grid;
 	final int dimension = 10;
 	final String celltype = "Moore";
@@ -30,16 +30,17 @@ public class gridTest {
 	@Test
 	public void accesscelltest() {
 		final int coordinate = 9;
+		final int coordinate2 = 8;
 
-		assertNotEquals(null, grid.getCell(9, 9));
+		assertNotEquals(null, grid.getCell(coordinate, coordinate));
 
 		Cell cell = mock(MooreCell.class);
-		grid.insertCell(9, 9, cell);
-		assertEquals(cell, grid.getCell(9, 9));
+		grid.insertCell(coordinate, coordinate, cell);
+		assertEquals(cell, grid.getCell(coordinate, coordinate));
 
 		cell = mock(MooreCell.class);
-		grid.insertCell(8, 8, cell);
-		assertEquals(cell, grid.getCell(8, 8));
+		grid.insertCell(coordinate2, coordinate2, cell);
+		assertEquals(cell, grid.getCell(coordinate2, coordinate2));
 	}
 
 }
