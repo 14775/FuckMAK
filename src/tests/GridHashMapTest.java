@@ -25,11 +25,17 @@ public class GridHashMapTest {
 		grid = new GridHashMap(dimension, celltype);
 	}
 
+	/*
+	 * tests grid initialization and method getGridLenght()
+	 */
 	@Test
 	public void dimensionCheck() {
-		assertEquals(dimension, grid.getGridLength());
+		assertEquals(dimension, grid.getGridDimension());
 	}
 
+	/*
+	 * tests getCell() and insertCell()
+	 */
 	@Test
 	public void accessCellTest() {
 		final int coordinate = 9;

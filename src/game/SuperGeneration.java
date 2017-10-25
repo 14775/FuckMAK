@@ -31,8 +31,8 @@ public class SuperGeneration {
 	public void drawGrid() {
 		System.out.print("### (" + generationNumber + ")");
 		System.out.println();
-		for (int row = 0; row < grid.getGridLength() - 1; row++) {
-			for (int col = 0; col < grid.getGridLength() - 1; col++) {
+		for (int row = 0; row < grid.getGridDimension() - 1; row++) {
+			for (int col = 0; col < grid.getGridDimension() - 1; col++) {
 				System.out.print(grid.getCell(row, col).isAlive() ? '1' : '0');
 			}
 			System.out.println();
@@ -42,8 +42,8 @@ public class SuperGeneration {
 
 	public void nextGeneration() {
 		newGrid = grid;
-		for (int row = 0; row < newGrid.getGridLength() - 1; row++) {
-			for (int col = 0; col < newGrid.getGridLength() - 1; col++) {
+		for (int row = 0; row < newGrid.getGridDimension() - 1; row++) {
+			for (int col = 0; col < newGrid.getGridDimension() - 1; col++) {
 
 				int neighbors = 0;
 				neighbors = getNumberOfAliveNeighbors(newGrid.getCell(row, col).neighbors());

@@ -10,12 +10,6 @@ public class Grid2DArray implements Grid {
 
 	public Grid2DArray(int dimension, String cellType) {
 		this.length = dimension;
-		// this.grid = new Cells[dimension][dimension];
-		// for (int row = 0; row < grid.length; row++) {
-		// for (int col = 0; col < grid[row].length; col++) {
-		// this.insertCell(row, col, new Cells(row, col));
-		// }
-		// }
 		if (cellType == "Moore") {
 			grid = new MooreCell[dimension][dimension];
 			for (int row = 0; row < dimension; row++) {
@@ -45,7 +39,7 @@ public class Grid2DArray implements Grid {
 	}
 
 	@Override
-	public int getGridLength() {
+	public int getGridDimension() {
 		return this.length;
 	}
 

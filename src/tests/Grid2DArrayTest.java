@@ -22,11 +22,18 @@ public class Grid2DArrayTest {
 		grid = new Grid2DArray(dimension, celltype);
 	}
 
+	/*
+	 * tests grid initialization and method getGridLength() getGridLenght()
+	 * should return dimension
+	 */
 	@Test
 	public void dimensioncheck() {
-		assertEquals(dimension, grid.getGridLength());
+		assertEquals(dimension, grid.getGridDimension());
 	}
 
+	/*
+	 * tests getCell() and insertCell()
+	 */
 	@Test
 	public void accesscelltest() {
 		final int coordinate = 9;

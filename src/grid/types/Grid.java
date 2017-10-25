@@ -7,5 +7,5 @@ public interface Grid {
 
 	public void insertCell(int x, int y, Cell newCell);
 
-	public int getGridLength();
+	public int getGridDimension();
 }

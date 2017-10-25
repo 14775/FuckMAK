@@ -43,7 +43,7 @@ public class GridHashMap implements Grid {
 	}
 
 	@Override
-	public int getGridLength() {
+	public int getGridDimension() {
 		return this.length;
 	}
 
