@@ -4,16 +4,16 @@ import java.util.HashMap;
 
 import celltypes.MooreCell;
 import celltypes.VonNeumannCell;
-import game.Cells;
+import game.Cell;
 
 public class GridHashMap implements Grid {
 	private int length;
-	private HashMap<String, Cells> grid;
+	private HashMap<String, Cell> grid;
 
 	public GridHashMap(int dimension, String cellType) {
 		this.length = dimension;
 		if (cellType == "Moore") {
-			grid = new HashMap<String, Cells>();
+			grid = new HashMap<>();
 			for (int row = 0; row < dimension; row++) {
 				for (int col = 0; col < dimension; col++) {
 					this.grid.put(String.valueOf(row) + String.valueOf(col), new MooreCell(row, col));
@@ -22,7 +22,7 @@ public class GridHashMap implements Grid {
 			}
 		}
 		if (cellType == "VonNeumann") {
-			grid = new HashMap<String, Cells>();
+			grid = new HashMap<>();
 			for (int row = 0; row < dimension; row++) {
 				for (int col = 0; col < dimension; col++) {
 					this.grid.put(String.valueOf(row) + String.valueOf(col), new VonNeumannCell(row, col));
@@ -33,12 +33,12 @@ public class GridHashMap implements Grid {
 	};
 
 	@Override
-	public Cells getCell(int row, int col) {
+	public Cell getCell(int row, int col) {
 		return this.grid.get(String.valueOf(row) + String.valueOf(col));
 	}
 
 	@Override
-	public void insertCell(int row, int col, Cells newCell) {
+	public void insertCell(int row, int col, Cell newCell) {
 		this.grid.put(String.valueOf(row) + String.valueOf(col), newCell);
 	}
 

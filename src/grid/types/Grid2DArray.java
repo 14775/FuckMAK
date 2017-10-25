@@ -2,10 +2,10 @@ package grid.types;
 
 import celltypes.MooreCell;
 import celltypes.VonNeumannCell;
-import game.Cells;
+import game.Cell;
 
 public class Grid2DArray implements Grid {
-	protected Cells[][] grid;
+	protected Cell[][] grid;
 	private int length;
 
 	public Grid2DArray(int dimension, String cellType) {
@@ -35,12 +35,12 @@ public class Grid2DArray implements Grid {
 	}
 
 	@Override
-	public Cells getCell(int x, int y) {
+	public Cell getCell(int x, int y) {
 		return this.grid[x][y];
 	}
 
 	@Override
-	public void insertCell(int x, int y, Cells newCell) {
+	public void insertCell(int x, int y, Cell newCell) {
 		this.grid[x][y] = newCell;
 	}
 
