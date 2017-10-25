@@ -9,12 +9,12 @@ import game.Rules;
 public class ParityModelRules implements Rules {
 
 	public boolean mustStayAlive(int numberOfAliveNeighbors) {
-		return numberOfAliveNeighbors % 2 == 0;
+		return numberOfAliveNeighbors % 2 != 0;
 
 	}
 
 	public boolean mustBeBorn(int numberOfAliveNeighbors) {
-		return numberOfAliveNeighbors % 2 == 0;
+		return numberOfAliveNeighbors % 2 != 0;
 	}
 
 }

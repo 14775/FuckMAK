@@ -42,8 +42,8 @@ public class SuperGeneration {
 
 	public void nextGeneration() {
 		newGrid = grid;
-		for (int row = 0; row < newGrid.getGridDimension() - 1; row++) {
-			for (int col = 0; col < newGrid.getGridDimension() - 1; col++) {
+		for (int row = 0; row <= newGrid.getGridDimension() - 1; row++) {
+			for (int col = 0; col <= newGrid.getGridDimension() - 1; col++) {
 
 				int neighbors = 0;
 				neighbors = getNumberOfAliveNeighbors(newGrid.getCell(row, col).neighbors());

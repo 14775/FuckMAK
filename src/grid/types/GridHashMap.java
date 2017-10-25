@@ -7,11 +7,11 @@ import celltypes.VonNeumannCell;
 import game.Cell;
 
 public class GridHashMap implements Grid {
-	private int length;
+	private int dimension;
 	private HashMap<String, Cell> grid;
 
 	public GridHashMap(int dimension, String cellType) {
-		this.length = dimension;
+		this.dimension = dimension;
 		if (cellType == "Moore") {
 			grid = new HashMap<>();
 			for (int row = 0; row < dimension; row++) {
@@ -44,7 +44,7 @@ public class GridHashMap implements Grid {
 
 	@Override
 	public int getGridDimension() {
-		return this.length;
+		return this.dimension;
 	}
 
 }

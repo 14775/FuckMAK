@@ -6,10 +6,10 @@ import game.Cell;
 
 public class Grid2DArray implements Grid {
 	protected Cell[][] grid;
-	private int length;
+	private int dimension;
 
 	public Grid2DArray(int dimension, String cellType) {
-		this.length = dimension;
+		this.dimension = dimension;
 		if (cellType == "Moore") {
 			grid = new MooreCell[dimension][dimension];
 			for (int row = 0; row < dimension; row++) {
@@ -40,7 +40,7 @@ public class Grid2DArray implements Grid {
 
 	@Override
 	public int getGridDimension() {
-		return this.length;
+		return this.dimension;
 	}
 
 };
