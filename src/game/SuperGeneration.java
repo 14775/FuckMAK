@@ -46,12 +46,12 @@ public class SuperGeneration {
 	}
 
 	public void nextGeneration() {
-		newGrid = grid;
+		newGrid = this.grid.cloneGrid();
 		for (int row = 0; row < newGrid.getGridDimension(); row++) {
 			for (int col = 0; col < newGrid.getGridDimension(); col++) {
 
 				int aliveNeighbors = 0;
-				aliveNeighbors = getNumberOfAliveNeighbors(grid.getCell(row, col).neighbors());
+				aliveNeighbors = getNumberOfAliveNeighbors(this.grid.getCell(row, col).neighbors());
 				if (!rules.mustStayAlive(aliveNeighbors))
 					newGrid.getCell(row, col).die();
 				if (rules.mustBeBorn(aliveNeighbors))

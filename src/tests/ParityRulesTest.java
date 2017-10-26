@@ -33,7 +33,7 @@ public class ParityRulesTest {
 
 		assertEquals(false, gen.getGrid().getCell(0, 0).isAlive());
 		assertEquals(false, gen.getGrid().getCell(0, 1).isAlive());
-		// assertEquals(false, gen.getGrid().getCell(0, 3).isAlive());
+		assertEquals(false, gen.getGrid().getCell(0, 3).isAlive());
 	}
 
 }
