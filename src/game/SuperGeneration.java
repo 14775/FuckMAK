@@ -50,11 +50,11 @@ public class SuperGeneration {
 		for (int row = 0; row < newGrid.getGridDimension(); row++) {
 			for (int col = 0; col < newGrid.getGridDimension(); col++) {
 
-				int neighbors = 0;
-				neighbors = getNumberOfAliveNeighbors(grid.getCell(row, col).neighbors());
-				if (!rules.mustStayAlive(neighbors))
+				int aliveNeighbors = 0;
+				aliveNeighbors = getNumberOfAliveNeighbors(grid.getCell(row, col).neighbors());
+				if (!rules.mustStayAlive(aliveNeighbors))
 					newGrid.getCell(row, col).die();
-				if (rules.mustBeBorn(neighbors))
+				if (rules.mustBeBorn(aliveNeighbors))
 					newGrid.getCell(row, col).live();
 			}
 
@@ -68,7 +68,7 @@ public class SuperGeneration {
 		int numberOfAliveNeighbors = 0;
 		for (int i = 0; i <= (neighbors.size() - 1); i += 2) {
 			// Am Rand abschneiden
-			// TODO komplexität reduzieren!
+			// TODO Komplexheit reduzieren!
 			if ((int) neighbors.get(i) > -1 && (int) neighbors.get(i + 1) > -1 && (int) neighbors.get(i) < dimension
 					&& (int) neighbors.get(i + 1) < dimension) {
 				if (grid.getCell((int) neighbors.get(i), (int) neighbors.get(i + 1)).isAlive()) {

@@ -27,10 +27,13 @@ public class ParityRulesTest {
 		gen.nextGeneration();
 
 		assertEquals(true, gen.getGrid().getCell(1, 1).isAlive());
-		assertEquals(false, gen.getGrid().getCell(0, 1).isAlive());
 		assertEquals(true, gen.getGrid().getCell(0, 2).isAlive());
-		assertEquals(false, gen.getGrid().getCell(2, 1).isAlive());
-		// assertEquals(true, gen.getGrid().getCell(2, 2).isAlive());
+		assertEquals(true, gen.getGrid().getCell(2, 2).isAlive());
+		assertEquals(true, gen.getGrid().getCell(1, 3).isAlive());
+
+		assertEquals(false, gen.getGrid().getCell(0, 0).isAlive());
+		assertEquals(false, gen.getGrid().getCell(0, 1).isAlive());
+		// assertEquals(false, gen.getGrid().getCell(0, 3).isAlive());
 	}
 
 }
