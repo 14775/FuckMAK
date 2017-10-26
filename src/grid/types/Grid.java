@@ -1,11 +1,11 @@
 package grid.types;
 
-import game.Cells;
+import game.Cell;
 
 public interface Grid {
-	public Cells getCell(int x, int y);
+	public Cell getCell(int x, int y);
 
-	public void insertCell(int x, int y, Cells newCell);
+	public void insertCell(int x, int y, Cell newCell);
 
-	public int getGridLength();
+	public int getGridDimension();
 }

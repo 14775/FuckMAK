@@ -2,20 +2,14 @@ package grid.types;
 
 import celltypes.MooreCell;
 import celltypes.VonNeumannCell;
-import game.Cells;
+import game.Cell;
 
 public class Grid2DArray implements Grid {
-	protected Cells[][] grid;
-	private int length;
+	protected Cell[][] grid;
+	private int dimension;
 
 	public Grid2DArray(int dimension, String cellType) {
-		this.length = dimension;
-		// this.grid = new Cells[dimension][dimension];
-		// for (int row = 0; row < grid.length; row++) {
-		// for (int col = 0; col < grid[row].length; col++) {
-		// this.insertCell(row, col, new Cells(row, col));
-		// }
-		// }
+		this.dimension = dimension;
 		if (cellType == "Moore") {
 			grid = new MooreCell[dimension][dimension];
 			for (int row = 0; row < dimension; row++) {
@@ -35,18 +29,18 @@ public class Grid2DArray implements Grid {
 	}
 
 	@Override
-	public Cells getCell(int x, int y) {
+	public Cell getCell(int x, int y) {
 		return this.grid[x][y];
 	}
 
 	@Override
-	public void insertCell(int x, int y, Cells newCell) {
+	public void insertCell(int x, int y, Cell newCell) {
 		this.grid[x][y] = newCell;
 	}
 
 	@Override
-	public int getGridLength() {
-		return this.length;
+	public int getGridDimension() {
+		return this.dimension;
 	}
 
 };

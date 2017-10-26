@@ -1,7 +1,9 @@
-package game;
+package gameModes;
 
-public class GenerationConf1 extends SuperGeneration {
-	public GenerationConf1(int dimension, String gridType, int rule, String cellType) {
+import game.SuperGeneration;
+
+public class GameOfLifeConfig1 extends SuperGeneration {
+	public GameOfLifeConfig1(int dimension, String gridType, int rule, String cellType) {
 		super(dimension, gridType, rule, cellType);
 		int row;
 		int col;

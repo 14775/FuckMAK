@@ -3,7 +3,7 @@ package game;
 import java.util.Collections;
 import java.util.List;
 
-public class Cells {
+public class Cells implements Cell {
 	protected int positionX;
 	protected int positionY;
 	private boolean alive;
