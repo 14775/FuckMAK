@@ -7,6 +7,7 @@ public class GridFactory {
 	/*
 	 * 
 	 */
+	// TODO @Erik Uppercasing
 	public Grid createGrid(String gridType, int dimension, String cellType) {
 		switch (gridType) {
 		case "2DArray":
