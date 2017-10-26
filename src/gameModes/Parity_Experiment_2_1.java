@@ -1,9 +1,9 @@
 package gameModes;
 
-public class Parity_Experiment_1_1 {
+public class Parity_Experiment_2_1 {
 
 	public static void main(String[] args) {
-		ParityConfig1 newGen = new ParityConfig1(400, "2DArray", 1, "VonNeumann");
+		ParityConfig2 newGen = new ParityConfig2(200, "2DArray", 1, "VonNeumann");
 		for (int i = 1; i <= 5; i++) {
 			newGen.nextGeneration();
 			newGen.drawGrid();
