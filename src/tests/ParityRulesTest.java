@@ -11,10 +11,12 @@ public class ParityRulesTest {
 	Controller gen;
 	final int dimension = 4;
 	final String celltype = "VonNeumann";
+	final String gridtype = "2DArray";
 
 	@Before
 	public void setUp() {
-		gen = new Controller(dimension, "2DArray", 1, celltype);
+		gen = new Controller();
+		gen.createGame(dimension, gridtype, 1, celltype, 0);
 	}
 
 	/*
@@ -22,7 +24,6 @@ public class ParityRulesTest {
 	 */
 	@Test
 	public void testParityRules1() {
-
 		gen.getGrid().getCell(1, 2).live();
 		gen.nextGeneration();
 		// alive cells after first run
@@ -46,7 +47,6 @@ public class ParityRulesTest {
 	 * tests rules by checking the expected cell states after the second run
 	 */
 	public void testParityRules2() {
-
 		gen.nextGeneration();
 		// alive cells after first run
 		assertEquals(true, gen.getGrid().getCell(1, 1).isAlive());
