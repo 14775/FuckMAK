@@ -11,10 +11,12 @@ public class ParityRulesTest {
 	Controller gen;
 	final int dimension = 4;
 	final String celltype = "VonNeumann";
+	final String gridtype = "2DArray";
 
 	@Before
 	public void setUp() {
-		gen = new Controller(dimension, "2DArray", 1, celltype);
+		gen = new Controller();
+		gen.createGame(dimension, gridtype, 1, celltype, 0);
 	}
 
 	/*

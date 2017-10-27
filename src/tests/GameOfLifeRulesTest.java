@@ -14,7 +14,8 @@ public class GameOfLifeRulesTest {
 
 	@Before
 	public void setUp() {
-		gen = new Controller(dimension, "2DArray", 0, celltype);
+		gen = new Controller();
+		gen.createGame(dimension, "2DArray", 0, celltype, 0);
 
 	}
 
