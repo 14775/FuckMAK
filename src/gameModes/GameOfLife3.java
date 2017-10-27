@@ -1,10 +1,13 @@
 package gameModes;
 
+import game.Controller;
+
 public class GameOfLife3 {
+	static Controller controller = new Controller();
 
 	public static void main(String[] args) {
-		GameOfLifeConfig3 newGen = new GameOfLifeConfig3(300, "HashMap", 0, "Moore");
-		newGen.nextGeneration();
-		newGen.drawGrid();
+		controller.createGame(300, "HashMap", 0, "Moore", 1);
+		controller.drawGrid();
+		controller.nextGeneration();
 	}
 }
