@@ -1,7 +1,10 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import breakconditions.IBreakCondition;
+import breakconditions.SameGridBreakCondition;
 import grid.types.Grid;
 import grid.types.GridFactory;
 import rules.GameOfLifeRules;
@@ -17,10 +20,15 @@ public class Controller {
 	}
 
 	private int dimension;
-	protected long generationNumber;
+	protected int generationNumber;
 	private Grid newGrid;
+	private List<IBreakCondition> breakConditions = new ArrayList<IBreakCondition>();
 
-	public Controller(int dimension, String gridType, int rules, String cellType) {
+	public Controller() {
+
+	}
+
+	public void createGame(int dimension, String gridType, int rules, String cellType, int breakCondition) {
 		GridFactory factory = new GridFactory();
 		this.dimension = dimension;
 		this.grid = factory.createGrid(gridType, dimension, cellType);
@@ -30,7 +38,9 @@ public class Controller {
 			this.rules = new GameOfLifeRules();
 		if (rules == 1)
 			this.rules = new ParityModelRules();
-
+		if (breakCondition == 0) {
+			breakConditions.add(new SameGridBreakCondition());
+		}
 	}
 
 	public void drawGrid() {
@@ -46,6 +56,7 @@ public class Controller {
 	}
 
 	public void nextGeneration() {
+		boolean mustBreak = false;
 		newGrid = this.grid.cloneGrid();
 		for (int row = 0; row < newGrid.getGridDimension(); row++) {
 			for (int col = 0; col < newGrid.getGridDimension(); col++) {
@@ -59,9 +70,19 @@ public class Controller {
 			}
 
 		}
-		grid = newGrid;
 		generationNumber++;
 
+		for (int i = 0; i < breakConditions.size(); i++) {
+			mustBreak = breakConditions.get(i).mustBreak(grid, newGrid, generationNumber);
+			System.out.println(mustBreak);
+		}
+
+		grid = newGrid;
+
+		if (!mustBreak) {
+			drawGrid();
+			nextGeneration();
+		}
 	}
 
 	public int getNumberOfAliveNeighbors(List<Number> neighbors) {
