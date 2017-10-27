@@ -8,8 +8,8 @@ public class GameOfLife1 {
 	public static void main(String[] args) {
 		controller.createGame(40, "2DArray", 0, "Moore", 1);
 		setStartConfiguration();
-		controller.drawGrid();
-		controller.nextGeneration();
+		// controller.drawGrid();
+		controller.evolve();
 	}
 
 	private static void setStartConfiguration() {
