@@ -6,8 +6,9 @@ public class GameOfLife1 {
 	static Controller controller = new Controller();
 
 	public static void main(String[] args) {
-		controller.createGame(40, "2DArray", 0, "Moore", 0);
+		controller.createGame(40, "2DArray", 0, "Moore", 1);
 		setStartConfiguration();
+		controller.drawGrid();
 		controller.nextGeneration();
 	}
 
@@ -38,5 +39,9 @@ public class GameOfLife1 {
 			}
 		}
 		controller.drawGrid();
+	}
+
+	private static void setStartConfiguration2() {
+		controller.getGrid().getCell(1, 1).live();
 	}
 }
