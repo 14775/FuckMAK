@@ -1,5 +1,7 @@
 package grid.types;
 
+import com.rits.cloning.Cloner;
+
 import celltypes.MooreCell;
 import celltypes.VonNeumannCell;
 import game.Cell;
@@ -43,4 +45,10 @@ public class Grid2DArray implements Grid {
 		return this.dimension;
 	}
 
+	@Override
+	public Grid cloneGrid() {
+		Cloner cloner = new Cloner();
+		Grid newGrid = cloner.deepClone(this);
+		return newGrid;
+	};
 };

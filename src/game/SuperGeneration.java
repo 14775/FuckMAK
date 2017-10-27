@@ -11,6 +11,11 @@ public class SuperGeneration {
 
 	protected Rules rules;
 	protected Grid grid;
+
+	public Grid getGrid() {
+		return this.grid;
+	}
+
 	private int dimension;
 	protected long generationNumber;
 	private Grid newGrid;
@@ -41,15 +46,15 @@ public class SuperGeneration {
 	}
 
 	public void nextGeneration() {
-		newGrid = grid;
-		for (int row = 0; row <= newGrid.getGridDimension() - 1; row++) {
-			for (int col = 0; col <= newGrid.getGridDimension() - 1; col++) {
+		newGrid = this.grid.cloneGrid();
+		for (int row = 0; row < newGrid.getGridDimension(); row++) {
+			for (int col = 0; col < newGrid.getGridDimension(); col++) {
 
-				int neighbors = 0;
-				neighbors = getNumberOfAliveNeighbors(newGrid.getCell(row, col).neighbors());
-				if (!rules.mustStayAlive(neighbors))
+				int aliveNeighbors = 0;
+				aliveNeighbors = getNumberOfAliveNeighbors(this.grid.getCell(row, col).neighbors());
+				if (!rules.mustStayAlive(aliveNeighbors))
 					newGrid.getCell(row, col).die();
-				if (rules.mustBeBorn(neighbors))
+				if (rules.mustBeBorn(aliveNeighbors))
 					newGrid.getCell(row, col).live();
 			}
 
@@ -61,12 +66,12 @@ public class SuperGeneration {
 
 	public int getNumberOfAliveNeighbors(List<Number> neighbors) {
 		int numberOfAliveNeighbors = 0;
-		for (int i = 0; i <= (neighbors.size() - 2); i++) {
+		for (int i = 0; i <= (neighbors.size() - 1); i += 2) {
 			// Am Rand abschneiden
-			// TODO komplexität reduzieren!
+			// TODO Komplexheit reduzieren!
 			if ((int) neighbors.get(i) > -1 && (int) neighbors.get(i + 1) > -1 && (int) neighbors.get(i) < dimension
 					&& (int) neighbors.get(i + 1) < dimension) {
-				if (newGrid.getCell((int) neighbors.get(i), (int) neighbors.get(i + 1)).isAlive()) {
+				if (grid.getCell((int) neighbors.get(i), (int) neighbors.get(i + 1)).isAlive()) {
 					numberOfAliveNeighbors++;
 				}
 			}

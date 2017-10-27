@@ -8,4 +8,6 @@ public interface Grid {
 	public void insertCell(int x, int y, Cell newCell);
 
 	public int getGridDimension();
+
+	public Grid cloneGrid();
 }

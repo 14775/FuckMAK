@@ -2,6 +2,8 @@ package grid.types;
 
 import java.util.HashMap;
 
+import com.rits.cloning.Cloner;
+
 import celltypes.MooreCell;
 import celltypes.VonNeumannCell;
 import game.Cell;
@@ -47,4 +49,10 @@ public class GridHashMap implements Grid {
 		return this.dimension;
 	}
 
+	@Override
+	public Grid cloneGrid() {
+		Cloner cloner = new Cloner();
+		Grid newGrid = cloner.deepClone(this);
+		return newGrid;
+	};
 }
