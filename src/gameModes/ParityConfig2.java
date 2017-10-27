@@ -1,8 +1,8 @@
 package gameModes;
 
-import game.SuperGeneration;
+import game.Controller;
 
-public class ParityConfig2 extends SuperGeneration {
+public class ParityConfig2 extends Controller {
 	public ParityConfig2(int dimension, String gridType, int rule, String cellType) {
 		super(dimension, gridType, rule, cellType);
 		boolean lives;

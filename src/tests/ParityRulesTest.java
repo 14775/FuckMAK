@@ -5,16 +5,16 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import game.SuperGeneration;
+import game.Controller;
 
 public class ParityRulesTest {
-	SuperGeneration gen;
+	Controller gen;
 	final int dimension = 4;
 	final String celltype = "VonNeumann";
 
 	@Before
 	public void setUp() {
-		gen = new SuperGeneration(dimension, "2DArray", 1, celltype);
+		gen = new Controller(dimension, "2DArray", 1, celltype);
 	}
 
 	/*

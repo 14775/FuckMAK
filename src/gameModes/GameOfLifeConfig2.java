@@ -1,8 +1,8 @@
 package gameModes;
 
-import game.SuperGeneration;
+import game.Controller;
 
-public class GameOfLifeConfig2 extends SuperGeneration {
+public class GameOfLifeConfig2 extends Controller {
 	public GameOfLifeConfig2(int dimension, String gridType, int rule, String cellType) {
 		super(dimension, gridType, rule, cellType);
 		boolean lives;

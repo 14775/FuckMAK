@@ -7,7 +7,7 @@ import grid.types.GridFactory;
 import rules.GameOfLifeRules;
 import rules.ParityModelRules;
 
-public class SuperGeneration {
+public class Controller {
 
 	protected Rules rules;
 	protected Grid grid;
@@ -20,7 +20,7 @@ public class SuperGeneration {
 	protected long generationNumber;
 	private Grid newGrid;
 
-	public SuperGeneration(int dimension, String gridType, int rules, String cellType) {
+	public Controller(int dimension, String gridType, int rules, String cellType) {
 		GridFactory factory = new GridFactory();
 		this.dimension = dimension;
 		this.grid = factory.createGrid(gridType, dimension, cellType);
