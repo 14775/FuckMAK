@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import breakconditions.IBreakCondition;
+import breakconditions.MaxTurnsBreakCondition;
 import breakconditions.SameGridBreakCondition;
 import grid.types.Grid;
 import grid.types.GridFactory;
@@ -23,6 +24,7 @@ public class Controller {
 	protected int generationNumber;
 	private Grid newGrid;
 	private List<IBreakCondition> breakConditions = new ArrayList<IBreakCondition>();
+	private int maxTurns;
 
 	public Controller() {
 
@@ -38,9 +40,20 @@ public class Controller {
 			this.rules = new GameOfLifeRules();
 		if (rules == 1)
 			this.rules = new ParityModelRules();
-		if (breakCondition == 0) {
+		if (breakCondition == 1)
 			breakConditions.add(new SameGridBreakCondition());
+		if (breakCondition == 0)
+			breakConditions.add(new MaxTurnsBreakCondition(maxTurns));
+		if (breakCondition == 2) {
+			breakConditions.add(new SameGridBreakCondition());
+			breakConditions.add(new MaxTurnsBreakCondition(maxTurns));
 		}
+	}
+
+	public void createGame(int dimension, String gridType, int rules, String cellType, int breakCondition,
+			int maxTurns) {
+		this.maxTurns = maxTurns;
+		this.createGame(dimension, gridType, rules, cellType, breakCondition);
 	}
 
 	public void drawGrid() {
@@ -72,9 +85,8 @@ public class Controller {
 		}
 		generationNumber++;
 
-		for (int i = 0; i < breakConditions.size(); i++) {
+		for (int i = 0; i < breakConditions.size() && !mustBreak; i++) {
 			mustBreak = breakConditions.get(i).mustBreak(grid, newGrid, generationNumber);
-			System.out.println(mustBreak);
 		}
 
 		grid = newGrid;
