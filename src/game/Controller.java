@@ -68,8 +68,21 @@ public class Controller {
 
 	}
 
-	public void nextGeneration() {
+	public void evolve() {
+		newGrid = this.grid.cloneGrid();
+
 		boolean mustBreak = false;
+
+		while (!mustBreak) {
+			for (int i = 0; i < breakConditions.size() && !mustBreak; i++) {
+				mustBreak = breakConditions.get(i).mustBreak(grid, newGrid, generationNumber);
+			}
+			nextGeneration();
+			drawGrid();
+		}
+	}
+
+	public void nextGeneration() {
 		newGrid = this.grid.cloneGrid();
 		for (int row = 0; row < newGrid.getGridDimension(); row++) {
 			for (int col = 0; col < newGrid.getGridDimension(); col++) {
@@ -84,17 +97,7 @@ public class Controller {
 
 		}
 		generationNumber++;
-
-		for (int i = 0; i < breakConditions.size() && !mustBreak; i++) {
-			mustBreak = breakConditions.get(i).mustBreak(grid, newGrid, generationNumber);
-		}
-
 		grid = newGrid;
-
-		if (!mustBreak) {
-			drawGrid();
-			nextGeneration();
-		}
 	}
 
 	public int getNumberOfAliveNeighbors(List<Number> neighbors) {
