@@ -9,10 +9,10 @@ public class GridFactory {
 	 */
 	// TODO @Erik Uppercasing
 	public Grid createGrid(String gridType, int dimension, String cellType) {
-		switch (gridType) {
-		case "2DArray":
+		switch (gridType.toUpperCase()) {
+		case "2DARRAY":
 			return new Grid2DArray(dimension, cellType);
-		case "HashMap":
+		case "HASHMAP":
 			return new GridHashMap(dimension, cellType);
 		default:
 			throw new IllegalArgumentException("There is no matching Grid Type!");

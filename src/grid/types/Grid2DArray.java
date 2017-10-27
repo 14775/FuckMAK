@@ -48,7 +48,6 @@ public class Grid2DArray implements Grid {
 	@Override
 	public Grid cloneGrid() {
 		Cloner cloner = new Cloner();
-		Grid newGrid = cloner.deepClone(this);
-		return newGrid;
-	};
-};
+		return cloner.deepClone(this);
+	}
+}
