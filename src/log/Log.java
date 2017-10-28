@@ -22,9 +22,10 @@ public final class Log {
 			Neighborhood cellType) {
 		loggingType = logType;
 		initilized = true;
-		if (loggingType == loggingType.NOLOG) {
+		if (loggingType == LogType.NOLOG) {
 		} else {
-			// TODO MISSING TimeControl needs proper output... no milisecs or secs but
+			// TODO MISSING TimeControl needs proper output... no milisecs or
+			// secs but
 			// proper hh/mm/ss/mmmm
 			result.append("Startime: " + String.valueOf(TimeControl.getStartTime()) + "\n" + "Ruleset: "
 					+ String.valueOf(rules) + "\n" + "Grid Type: " + String.valueOf(gridType) + "\n" + "Grid Size: "
@@ -36,19 +37,20 @@ public final class Log {
 
 	public static void append(String addString) {
 		result.append(addString);
-		// TODO automatically extend capacity of the StringBuilder once it hits the
+		// TODO automatically extend capacity of the StringBuilder once it hits
+		// the
 		// limit
 
 	};
 
 	public static void endLog() throws IOException {
-		if (loggingType == loggingType.NOLOG) {
+		if (loggingType == LogType.NOLOG) {
 		} else {
 
-			if (loggingType == loggingType.CONSOLE) {
+			if (loggingType == LogType.CONSOLE) {
 				System.out.println(result.toString());
 			}
-			if (loggingType == loggingType.SAVETOFILE) {
+			if (loggingType == LogType.SAVETOFILE) {
 				Date filedate = new Date();
 				File dir = new File("logs/");
 				if (!dir.isDirectory()) {

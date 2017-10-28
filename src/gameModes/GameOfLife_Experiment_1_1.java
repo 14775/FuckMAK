@@ -1,7 +1,6 @@
 package gameModes;
 
 import game.Controller;
-import log.Log;
 import settings.Datastructure;
 import settings.LogType;
 import settings.Neighborhood;
