@@ -10,6 +10,8 @@ import grid.types.Grid;
 import grid.types.GridFactory;
 import rules.GameOfLifeRules;
 import rules.ParityModelRules;
+import settings.Datastructure;
+import settings.Neighborhood;
 
 public class Controller {
 
@@ -22,11 +24,17 @@ public class Controller {
 
 	private int dimension;
 	protected int generationNumber;
+
+	public int getGenerationNumber() {
+		return generationNumber;
+	}
+
 	private Grid newGrid;
 	private List<IBreakCondition> breakConditions = new ArrayList<IBreakCondition>();
 	private int maxTurns;
 
-	public void createGame(int dimension, String gridType, int rules, String cellType, int breakCondition) {
+	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType,
+			int breakCondition) {
 		GridFactory factory = new GridFactory();
 		this.dimension = dimension;
 		this.grid = factory.createGrid(gridType, dimension, cellType);
@@ -46,7 +54,7 @@ public class Controller {
 		}
 	}
 
-	public void createGame(int dimension, String gridType, int rules, String cellType, int breakCondition,
+	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType, int breakCondition,
 			int maxTurns) {
 		this.maxTurns = maxTurns;
 		this.createGame(dimension, gridType, rules, cellType, breakCondition);
@@ -55,8 +63,8 @@ public class Controller {
 	public void drawGrid() {
 		System.out.print("### (" + generationNumber + ")");
 		System.out.println();
-		for (int row = 0; row < grid.getGridDimension() - 1; row++) {
-			for (int col = 0; col < grid.getGridDimension() - 1; col++) {
+		for (int row = 0; row < grid.getGridDimension(); row++) {
+			for (int col = 0; col < grid.getGridDimension(); col++) {
 				System.out.print(grid.getCell(row, col).isAlive() ? '1' : '0');
 			}
 			System.out.println();

@@ -1,12 +1,14 @@
 package gameModes;
 
 import game.Controller;
+import settings.Datastructure;
+import settings.Neighborhood;
 
 public class Parity_Experiment_1_2 {
 	static Controller controller = new Controller();
 
 	public static void main(String[] args) {
-		controller.createGame(400, "HashMap", 1, "VonNeumann", 2, 100);
+		controller.createGame(400, Datastructure.HASHMAP, 1, Neighborhood.VONNEUMANN, 2, 100);
 		setStartConfiguration();
 		controller.drawGrid();
 		controller.nextGeneration();

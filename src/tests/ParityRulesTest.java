@@ -6,12 +6,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import game.Controller;
+import settings.Datastructure;
+import settings.Neighborhood;
 
 public class ParityRulesTest {
 	Controller gen;
 	final int dimension = 4;
-	final String celltype = "VonNeumann";
-	final String gridtype = "2DArray";
+	final Neighborhood celltype = Neighborhood.VONNEUMANN;
+	final Datastructure gridtype = Datastructure.ARRAY;
 
 	@Before
 	public void setUp() {

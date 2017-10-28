@@ -9,12 +9,13 @@ import org.junit.Test;
 
 import grid.types.Grid;
 import grid.types.Grid2DArray;
+import settings.Neighborhood;
 
 public class VonNeumannCellTest {
 	Grid grid;
 	final int dimension = 10;
 	final int checkpos = 5;
-	final String celltype = "VonNeumann";
+	final Neighborhood celltype = Neighborhood.VONNEUMANN;
 
 	@Before
 	/*

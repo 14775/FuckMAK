@@ -1,12 +1,14 @@
 package gameModes;
 
 import game.Controller;
+import settings.Datastructure;
+import settings.Neighborhood;
 
-public class GameOfLife1 {
+public class GameOfLife_Experiment_1_1 {
 	static Controller controller = new Controller();
 
 	public static void main(String[] args) {
-		controller.createGame(40, "2DArray", 0, "Moore", 2, 100);
+		controller.createGame(40, Datastructure.ARRAY, 0, Neighborhood.MOORE, 2, 100);
 		setStartConfiguration();
 		// controller.drawGrid();
 		controller.evolve();

@@ -11,11 +11,12 @@ import celltypes.MooreCell;
 import game.Cell;
 import grid.types.Grid;
 import grid.types.Grid2DArray;
+import settings.Neighborhood;
 
 public class Grid2DArrayTest {
 	Grid grid;
 	final int dimension = 10;
-	final String celltype = "Moore";
+	final Neighborhood celltype = Neighborhood.MOORE;
 
 	@Before
 	public void setUp() {
@@ -23,8 +24,8 @@ public class Grid2DArrayTest {
 	}
 
 	/*
-	 * tests grid initialization and method getGridLength() getGridLenght()
-	 * should return dimension
+	 * tests grid initialization and method getGridLength() getGridLenght() should
+	 * return dimension
 	 */
 	@Test
 	public void dimensioncheck() {

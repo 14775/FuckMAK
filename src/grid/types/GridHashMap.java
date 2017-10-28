@@ -7,14 +7,15 @@ import com.rits.cloning.Cloner;
 import celltypes.MooreCell;
 import celltypes.VonNeumannCell;
 import game.Cell;
+import settings.Neighborhood;
 
 public class GridHashMap implements Grid {
 	private int dimension;
 	private HashMap<String, Cell> grid;
 
-	public GridHashMap(int dimension, String cellType) {
+	public GridHashMap(int dimension, Neighborhood cellType) {
 		this.dimension = dimension;
-		if (cellType == "Moore") {
+		if (cellType == Neighborhood.MOORE) {
 			grid = new HashMap<>();
 			for (int row = 0; row < dimension; row++) {
 				for (int col = 0; col < dimension; col++) {
@@ -23,7 +24,7 @@ public class GridHashMap implements Grid {
 
 			}
 		}
-		if (cellType == "VonNeumann") {
+		if (cellType == Neighborhood.VONNEUMANN) {
 			grid = new HashMap<>();
 			for (int row = 0; row < dimension; row++) {
 				for (int col = 0; col < dimension; col++) {
@@ -32,7 +33,7 @@ public class GridHashMap implements Grid {
 
 			}
 		}
-	};
+	}
 
 	@Override
 	public Cell getCell(int row, int col) {
@@ -52,7 +53,6 @@ public class GridHashMap implements Grid {
 	@Override
 	public Grid cloneGrid() {
 		Cloner cloner = new Cloner();
-		Grid newGrid = cloner.deepClone(this);
-		return newGrid;
-	};
+		return cloner.deepClone(this);
+	}
 }
