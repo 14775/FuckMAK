@@ -1,6 +1,8 @@
 package timer;
 
-public class TimerController {
+import log.Log;
+
+public class TimeControl {
 
 	private static long secondsPassed = 0;
 
@@ -22,9 +24,7 @@ public class TimerController {
 
 		secondsPassed = (stopTime - startTime) / 1000; // change milliseconds to seconds
 
-		// TODO Logger adden
-
-		System.out.println(secondsPassed);
+		Log.append("\nSimulation Time: " + String.valueOf(secondsPassed) + "Seconds");
 
 	}
 
@@ -32,4 +32,7 @@ public class TimerController {
 		return running;
 	}
 
+	public static long getStartTime() {
+		return startTime;
+	};
 }

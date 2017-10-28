@@ -9,7 +9,6 @@ public class GameOfLife_Experiment_3_1 {
 
 	public static void main(String[] args) {
 		controller.createGame(300, Datastructure.ARRAY, 0, Neighborhood.MOORE, 0, 1);
-		controller.drawGrid();
 		controller.evolve();
 	}
 }
