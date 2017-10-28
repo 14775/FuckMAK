@@ -63,8 +63,8 @@ public class Controller {
 	public void drawGrid() {
 		System.out.print("### (" + generationNumber + ")");
 		System.out.println();
-		for (int row = 0; row < grid.getGridDimension() - 1; row++) {
-			for (int col = 0; col < grid.getGridDimension() - 1; col++) {
+		for (int row = 0; row < grid.getGridDimension(); row++) {
+			for (int col = 0; col < grid.getGridDimension(); col++) {
 				System.out.print(grid.getCell(row, col).isAlive() ? '1' : '0');
 			}
 			System.out.println();

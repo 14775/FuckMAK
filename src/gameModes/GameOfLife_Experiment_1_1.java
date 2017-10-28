@@ -4,7 +4,7 @@ import game.Controller;
 import settings.Datastructure;
 import settings.Neighborhood;
 
-public class GameOfLife1 {
+public class GameOfLife_Experiment_1_1 {
 	static Controller controller = new Controller();
 
 	public static void main(String[] args) {

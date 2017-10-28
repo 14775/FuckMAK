@@ -34,7 +34,7 @@ public class MaxTurnsBreakConditionTest {
 	 * tests maxTurns
 	 */
 	@Test
-	public void neighborsCheck() {
+	public void maxTurnsTest() {
 		controller.evolve();
 		assertEquals(maxturns, controller.getGenerationNumber());
 

@@ -4,14 +4,13 @@ import game.Controller;
 import settings.Datastructure;
 import settings.Neighborhood;
 
-public class GameOfLife2 {
+public class GameOfLife_Experiment_2_1 {
 	static Controller controller = new Controller();
 
 	public static void main(String[] args) {
-		controller.createGame(100, Datastructure.HASHMAP, 0, Neighborhood.MOORE, 1);
+		controller.createGame(100, Datastructure.ARRAY, 0, Neighborhood.MOORE, 0, 100);
 		setStartConfiguration();
-		controller.drawGrid();
-		controller.nextGeneration();
+		controller.evolve();
 	}
 
 	public static void setStartConfiguration() {

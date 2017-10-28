@@ -33,7 +33,7 @@ public class GridHashMap implements Grid {
 
 			}
 		}
-	};
+	}
 
 	@Override
 	public Cell getCell(int row, int col) {
@@ -53,7 +53,6 @@ public class GridHashMap implements Grid {
 	@Override
 	public Grid cloneGrid() {
 		Cloner cloner = new Cloner();
-		Grid newGrid = cloner.deepClone(this);
-		return newGrid;
-	};
+		return cloner.deepClone(this);
+	}
 }
