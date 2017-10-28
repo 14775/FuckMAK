@@ -42,6 +42,9 @@ public class Controller {
 		if (!TimeControl.getRunning()) {
 			TimeControl.startTimer();
 		}
+		if (!Log.getInitilized()) {
+			Log.initLog(LogType.NOLOG, rules, gridType, dimension, cellType);
+		}
 		GridFactory factory = new GridFactory();
 		this.dimension = dimension;
 		this.grid = factory.createGrid(gridType, dimension, cellType);

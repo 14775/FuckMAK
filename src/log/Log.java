@@ -16,10 +16,12 @@ public final class Log {
 	private static LogType loggingType;
 	private static DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd-HH_mm_ss");
 	private static StringBuilder result = new StringBuilder();
+	private static boolean initilized = false;
 
 	public static void initLog(LogType logType, int rules, Datastructure gridType, int dimension,
 			Neighborhood cellType) {
 		loggingType = logType;
+		initilized = true;
 		if (loggingType == loggingType.NOLOG) {
 		} else {
 			// TODO MISSING TimeControl needs proper output... no milisecs or secs but
@@ -58,5 +60,9 @@ public final class Log {
 				fileWriter.close();
 			}
 		}
+	}
+
+	public static boolean getInitilized() {
+		return initilized;
 	}
 }
