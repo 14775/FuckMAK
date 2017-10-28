@@ -8,10 +8,13 @@ import breakconditions.MaxTurnsBreakCondition;
 import breakconditions.SameGridBreakCondition;
 import grid.types.Grid;
 import grid.types.GridFactory;
+import log.Log;
 import rules.GameOfLifeRules;
 import rules.ParityModelRules;
 import settings.Datastructure;
+import settings.LogType;
 import settings.Neighborhood;
+import timer.TimerController;
 
 public class Controller {
 
@@ -35,6 +38,9 @@ public class Controller {
 
 	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType,
 			int breakCondition) {
+		if (!TimerController.getRunning()) {
+			TimerController.startTimer();
+		}
 		GridFactory factory = new GridFactory();
 		this.dimension = dimension;
 		this.grid = factory.createGrid(gridType, dimension, cellType);
@@ -56,7 +62,23 @@ public class Controller {
 
 	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType, int breakCondition,
 			int maxTurns) {
+		TimerController.startTimer();
 		this.maxTurns = maxTurns;
+		this.createGame(dimension, gridType, rules, cellType, breakCondition);
+	}
+
+	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType, int breakCondition,
+			int maxTurns, LogType logType) {
+		TimerController.startTimer();
+		Log.initLog(logType);
+		this.maxTurns = maxTurns;
+		this.createGame(dimension, gridType, rules, cellType, breakCondition);
+	}
+
+	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType, int breakCondition,
+			LogType logType) {
+		TimerController.startTimer();
+		Log.initLog(logType);
 		this.createGame(dimension, gridType, rules, cellType, breakCondition);
 	}
 
@@ -85,6 +107,7 @@ public class Controller {
 			grid = newGrid;
 
 		}
+		TimerController.stopTimer();
 	}
 
 	public void nextGeneration() {
