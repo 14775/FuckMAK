@@ -1,14 +1,11 @@
 package log;
 
-import java.io.Closeable;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import com.sun.glass.ui.Timer;
 
 import settings.Datastructure;
 import settings.LogType;
@@ -51,6 +48,10 @@ public final class Log {
 			}
 			if (loggingType == loggingType.SAVETOFILE) {
 				Date filedate = new Date();
+				File dir = new File("logs/");
+				if (!dir.isDirectory()) {
+					dir.mkdir();
+				}
 				File file = new File("logs/" + String.valueOf(dateFormat.format(filedate) + ".txt"));
 				FileWriter fileWriter = new FileWriter(file);
 				fileWriter.append(result.toString());
