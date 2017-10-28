@@ -24,6 +24,11 @@ public class Controller {
 
 	private int dimension;
 	protected int generationNumber;
+
+	public int getGenerationNumber() {
+		return generationNumber;
+	}
+
 	private Grid newGrid;
 	private List<IBreakCondition> breakConditions = new ArrayList<IBreakCondition>();
 	private int maxTurns;

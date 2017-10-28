@@ -2,60 +2,42 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
+import game.Controller;
 import grid.types.Grid;
-import grid.types.Grid2DArray;
+import settings.Datastructure;
 import settings.Neighborhood;
 
 public class MaxTurnsBreakConditionTest {
 	Grid grid;
-	final int dimension = 10;
-	final int checkpos = 5;
+	final int dimension = 3;
+	final int maxturns = 5;
 	final Neighborhood celltype = Neighborhood.MOORE;
+	final Datastructure gridtype = Datastructure.ARRAY;
+	static Controller controller;
 
 	@Before
 	/*
 	 * Creates a Grid
 	 */
 	public void setUp() {
-		grid = new Grid2DArray(dimension, celltype);
+		controller = new Controller();
+		controller.createGame(dimension, gridtype, 0, celltype, 0, maxturns);
+		controller.getGrid().getCell(1, 0).live();
+		controller.getGrid().getCell(1, 1).live();
+		controller.getGrid().getCell(1, 2).live();
 	}
 
 	/*
-	 * tests neighbors() for a cell at [5][5]
+	 * tests maxTurns
 	 */
 	@Test
 	public void neighborsCheck() {
-		assertEquals(dimension, grid.getGridDimension());
-		List<Number> neighbors = grid.getCell(checkpos, checkpos).neighbors();
+		controller.evolve();
+		assertEquals(maxturns, controller.getGenerationNumber());
 
-		assertEquals(neighbors.get(0), 6);
-		assertEquals(neighbors.get(1), 6);
-
-		assertEquals(neighbors.get(2), 6);
-		assertEquals(neighbors.get(3), 5);
-
-		assertEquals(neighbors.get(4), 6);
-		assertEquals(neighbors.get(5), 4);
-
-		assertEquals(neighbors.get(6), 5);
-		assertEquals(neighbors.get(7), 6);
-
-		assertEquals(neighbors.get(8), 5);
-		assertEquals(neighbors.get(9), 4);
-
-		assertEquals(neighbors.get(10), 4);
-		assertEquals(neighbors.get(11), 6);
-
-		assertEquals(neighbors.get(12), 4);
-		assertEquals(neighbors.get(13), 5);
-
-		assertEquals(neighbors.get(14), 4);
-		assertEquals(neighbors.get(15), 4);
 	}
 
 }
