@@ -26,10 +26,6 @@ public class Controller {
 	private List<IBreakCondition> breakConditions = new ArrayList<IBreakCondition>();
 	private int maxTurns;
 
-	public Controller() {
-
-	}
-
 	public void createGame(int dimension, String gridType, int rules, String cellType, int breakCondition) {
 		GridFactory factory = new GridFactory();
 		this.dimension = dimension;

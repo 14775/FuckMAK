@@ -6,7 +6,7 @@ public class GameOfLife1 {
 	static Controller controller = new Controller();
 
 	public static void main(String[] args) {
-		controller.createGame(40, "2DArray", 0, "Moore", 1);
+		controller.createGame(40, "2DArray", 0, "Moore", 2, 100);
 		setStartConfiguration();
 		// controller.drawGrid();
 		controller.evolve();
