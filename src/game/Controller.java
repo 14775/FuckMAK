@@ -1,13 +1,19 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import breakconditions.IBreakCondition;
+import breakconditions.MaxTurnsBreakCondition;
+import breakconditions.SameGridBreakCondition;
 import grid.types.Grid;
 import grid.types.GridFactory;
 import rules.GameOfLifeRules;
 import rules.ParityModelRules;
+import settings.Datastructure;
+import settings.Neighborhood;
 
-public class SuperGeneration {
+public class Controller {
 
 	protected Rules rules;
 	protected Grid grid;
@@ -17,10 +23,18 @@ public class SuperGeneration {
 	}
 
 	private int dimension;
-	protected long generationNumber;
-	private Grid newGrid;
+	protected int generationNumber;
 
-	public SuperGeneration(int dimension, String gridType, int rules, String cellType) {
+	public int getGenerationNumber() {
+		return generationNumber;
+	}
+
+	private Grid newGrid;
+	private List<IBreakCondition> breakConditions = new ArrayList<IBreakCondition>();
+	private int maxTurns;
+
+	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType,
+			int breakCondition) {
 		GridFactory factory = new GridFactory();
 		this.dimension = dimension;
 		this.grid = factory.createGrid(gridType, dimension, cellType);
@@ -30,19 +44,47 @@ public class SuperGeneration {
 			this.rules = new GameOfLifeRules();
 		if (rules == 1)
 			this.rules = new ParityModelRules();
+		if (breakCondition == 1)
+			breakConditions.add(new SameGridBreakCondition());
+		if (breakCondition == 0)
+			breakConditions.add(new MaxTurnsBreakCondition(maxTurns));
+		if (breakCondition == 2) {
+			breakConditions.add(new SameGridBreakCondition());
+			breakConditions.add(new MaxTurnsBreakCondition(maxTurns));
+		}
+	}
 
+	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType, int breakCondition,
+			int maxTurns) {
+		this.maxTurns = maxTurns;
+		this.createGame(dimension, gridType, rules, cellType, breakCondition);
 	}
 
 	public void drawGrid() {
 		System.out.print("### (" + generationNumber + ")");
 		System.out.println();
-		for (int row = 0; row < grid.getGridDimension() - 1; row++) {
-			for (int col = 0; col < grid.getGridDimension() - 1; col++) {
+		for (int row = 0; row < grid.getGridDimension(); row++) {
+			for (int col = 0; col < grid.getGridDimension(); col++) {
 				System.out.print(grid.getCell(row, col).isAlive() ? '1' : '0');
 			}
 			System.out.println();
 		}
 
+	}
+
+	public void evolve() {
+		boolean mustBreak = false;
+
+		while (!mustBreak) {
+			nextGeneration();
+			mustBreak = false;
+			for (int i = 0; i < breakConditions.size() && !mustBreak; i++) {
+				mustBreak = breakConditions.get(i).mustBreak(grid, newGrid, generationNumber);
+			}
+
+			grid = newGrid;
+
+		}
 	}
 
 	public void nextGeneration() {
@@ -59,9 +101,8 @@ public class SuperGeneration {
 			}
 
 		}
-		grid = newGrid;
 		generationNumber++;
-
+		drawGrid();
 	}
 
 	public int getNumberOfAliveNeighbors(List<Number> neighbors) {

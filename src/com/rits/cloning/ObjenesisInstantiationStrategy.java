@@ -11,6 +11,7 @@ import org.objenesis.ObjenesisStd;
 public class ObjenesisInstantiationStrategy implements IInstantiationStrategy {
 	private final Objenesis objenesis = new ObjenesisStd();
 
+	@SuppressWarnings("unchecked")
 	public <T> T newInstance(Class<T> c) {
 		return (T) objenesis.newInstance(c);
 	}

@@ -1,5 +1,8 @@
 package grid.types;
 
+import settings.Datastructure;
+import settings.Neighborhood;
+
 /*
  * 
  */
@@ -8,11 +11,11 @@ public class GridFactory {
 	 * 
 	 */
 	// TODO @Erik Uppercasing
-	public Grid createGrid(String gridType, int dimension, String cellType) {
+	public Grid createGrid(Datastructure gridType, int dimension, Neighborhood cellType) {
 		switch (gridType) {
-		case "2DArray":
+		case ARRAY:
 			return new Grid2DArray(dimension, cellType);
-		case "HashMap":
+		case HASHMAP:
 			return new GridHashMap(dimension, cellType);
 		default:
 			throw new IllegalArgumentException("There is no matching Grid Type!");

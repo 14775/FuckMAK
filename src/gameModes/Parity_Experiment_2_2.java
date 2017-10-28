@@ -1,12 +1,36 @@
 package gameModes;
 
+import game.Controller;
+import settings.Datastructure;
+import settings.Neighborhood;
+
 public class Parity_Experiment_2_2 {
+	static Controller controller = new Controller();
 
 	public static void main(String[] args) {
-		ParityConfig2 newGen = new ParityConfig2(200, "HashMap", 1, "VonNeumann");
-		for (int i = 1; i <= 100; i++) {
-			newGen.nextGeneration();
-			newGen.drawGrid();
+		controller.createGame(200, Datastructure.HASHMAP, 1, Neighborhood.VONNEUMANN, 2, 100);
+		setStartConfiguration();
+		controller.drawGrid();
+		controller.nextGeneration();
+	}
+
+	public static void setStartConfiguration() {
+		boolean lives;
+		for (int row = 0; row < controller.getGrid().getGridDimension() - 1; row++) {
+			if (row % 2 == 0) {
+				lives = false;
+			} else {
+				lives = true;
+			}
+			for (int col = 0; col < controller.getGrid().getGridDimension() - 1; col++) {
+				if (lives) {
+					controller.getGrid().getCell(row, col).live();
+				} else {
+					controller.getGrid().getCell(row, col).die();
+				}
+				lives = !lives;
+			}
 		}
+		controller.drawGrid();
 	}
 }
