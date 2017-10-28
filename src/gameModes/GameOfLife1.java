@@ -13,35 +13,31 @@ public class GameOfLife1 {
 	}
 
 	private static void setStartConfiguration() {
-		int row;
-		int col;
-		for (row = 18; row <= 23; row++) {
-			for (col = 17; col <= 23; col++) {
-				if (row == 18 || row == 19) {
-					if (col == 18 || col == 19 || col == 21 || col == 22) {
-						controller.getGrid().getCell(row, col).live();
-					}
-				}
-				if (row == 20) {
-					if (col == 19 || col == 21) {
-						controller.getGrid().getCell(row, col).live();
-					}
-				}
-				if (row == 21 || row == 22) {
-					if (col == 17 || col == 19 || col == 21 || col == 23)
-						controller.getGrid().getCell(row, col).live();
-				}
-				if (row == 23) {
-					if (col == 17 || col == 18 || col == 22 || col == 23)
-						controller.getGrid().getCell(row, col).live();
-				}
 
-			}
-		}
+		controller.getGrid().getCell(18, 18).live();
+		controller.getGrid().getCell(18, 19).live();
+		controller.getGrid().getCell(18, 21).live();
+		controller.getGrid().getCell(18, 22).live();
+		controller.getGrid().getCell(19, 18).live();
+		controller.getGrid().getCell(19, 19).live();
+		controller.getGrid().getCell(19, 21).live();
+		controller.getGrid().getCell(19, 22).live();
+		controller.getGrid().getCell(20, 19).live();
+		controller.getGrid().getCell(20, 21).live();
+		controller.getGrid().getCell(21, 17).live();
+		controller.getGrid().getCell(21, 19).live();
+		controller.getGrid().getCell(21, 21).live();
+		controller.getGrid().getCell(21, 23).live();
+		controller.getGrid().getCell(22, 17).live();
+		controller.getGrid().getCell(22, 19).live();
+		controller.getGrid().getCell(22, 21).live();
+		controller.getGrid().getCell(22, 23).live();
+		controller.getGrid().getCell(23, 17).live();
+		controller.getGrid().getCell(23, 18).live();
+		controller.getGrid().getCell(23, 22).live();
+		controller.getGrid().getCell(23, 23).live();
+
 		controller.drawGrid();
 	}
 
-	private static void setStartConfiguration2() {
-		controller.getGrid().getCell(1, 1).live();
-	}
 }
