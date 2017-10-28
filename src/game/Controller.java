@@ -69,16 +69,17 @@ public class Controller {
 	}
 
 	public void evolve() {
-		newGrid = this.grid.cloneGrid();
-
 		boolean mustBreak = false;
 
 		while (!mustBreak) {
+			nextGeneration();
+			mustBreak = false;
 			for (int i = 0; i < breakConditions.size() && !mustBreak; i++) {
 				mustBreak = breakConditions.get(i).mustBreak(grid, newGrid, generationNumber);
 			}
-			nextGeneration();
-			drawGrid();
+
+			grid = newGrid;
+
 		}
 	}
 
@@ -97,7 +98,7 @@ public class Controller {
 
 		}
 		generationNumber++;
-		grid = newGrid;
+		drawGrid();
 	}
 
 	public int getNumberOfAliveNeighbors(List<Number> neighbors) {
