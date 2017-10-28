@@ -1,5 +1,7 @@
 package timer;
 
+import java.util.concurrent.TimeUnit;
+
 import log.Log;
 
 public class TimeControl {
@@ -22,9 +24,15 @@ public class TimeControl {
 
 		stopTime = System.currentTimeMillis();
 
-		secondsPassed = (stopTime - startTime) / 1000; // change milliseconds to seconds
+		secondsPassed = (stopTime - startTime); // change milliseconds to seconds
 
-		Log.append("\nSimulation Time: " + String.valueOf(secondsPassed) + "Seconds");
+		String hoursminutesseconds = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(secondsPassed),
+				TimeUnit.MILLISECONDS.toMinutes(secondsPassed)
+						- TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(secondsPassed)),
+				TimeUnit.MILLISECONDS.toSeconds(secondsPassed)
+						- TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(secondsPassed)));
+
+		Log.append("\nSimulation Time: " + String.valueOf(hoursminutesseconds));
 
 	}
 
