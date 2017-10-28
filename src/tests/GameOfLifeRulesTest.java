@@ -6,16 +6,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import game.Controller;
+import settings.Datastructure;
+import settings.Neighborhood;
 
 public class GameOfLifeRulesTest {
 	Controller gen;
 	final int dimension = 5;
-	final String celltype = "Moore";
+	final Neighborhood celltype = Neighborhood.MOORE;
 
 	@Before
 	public void setUp() {
 		gen = new Controller();
-		gen.createGame(dimension, "2DArray", 0, celltype, 0);
+		gen.createGame(dimension, Datastructure.ARRAY, 0, celltype, 0);
 
 	}
 

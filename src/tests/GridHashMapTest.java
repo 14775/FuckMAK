@@ -11,11 +11,12 @@ import celltypes.MooreCell;
 import game.Cell;
 import grid.types.Grid;
 import grid.types.GridHashMap;
+import settings.Neighborhood;
 
 public class GridHashMapTest {
 	Grid grid;
 	final int dimension = 10;
-	final String celltype = "Moore";
+	final Neighborhood celltype = Neighborhood.MOORE;
 
 	@Before
 	/*

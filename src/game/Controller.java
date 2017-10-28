@@ -10,6 +10,8 @@ import grid.types.Grid;
 import grid.types.GridFactory;
 import rules.GameOfLifeRules;
 import rules.ParityModelRules;
+import settings.Datastructure;
+import settings.Neighborhood;
 
 public class Controller {
 
@@ -26,7 +28,8 @@ public class Controller {
 	private List<IBreakCondition> breakConditions = new ArrayList<IBreakCondition>();
 	private int maxTurns;
 
-	public void createGame(int dimension, String gridType, int rules, String cellType, int breakCondition) {
+	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType,
+			int breakCondition) {
 		GridFactory factory = new GridFactory();
 		this.dimension = dimension;
 		this.grid = factory.createGrid(gridType, dimension, cellType);
@@ -46,7 +49,7 @@ public class Controller {
 		}
 	}
 
-	public void createGame(int dimension, String gridType, int rules, String cellType, int breakCondition,
+	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType, int breakCondition,
 			int maxTurns) {
 		this.maxTurns = maxTurns;
 		this.createGame(dimension, gridType, rules, cellType, breakCondition);

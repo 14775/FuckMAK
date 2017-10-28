@@ -9,12 +9,13 @@ import org.junit.Test;
 
 import grid.types.Grid;
 import grid.types.Grid2DArray;
+import settings.Neighborhood;
 
 public class MaxTurnsBreakConditionTest {
 	Grid grid;
 	final int dimension = 10;
 	final int checkpos = 5;
-	final String celltype = "Moore";
+	final Neighborhood celltype = Neighborhood.MOORE;
 
 	@Before
 	/*

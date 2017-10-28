@@ -1,12 +1,14 @@
 package gameModes;
 
 import game.Controller;
+import settings.Datastructure;
+import settings.Neighborhood;
 
 public class GameOfLife2 {
 	static Controller controller = new Controller();
 
 	public static void main(String[] args) {
-		controller.createGame(100, "HashMap", 0, "Moore", 1);
+		controller.createGame(100, Datastructure.HASHMAP, 0, Neighborhood.MOORE, 1);
 		setStartConfiguration();
 		controller.drawGrid();
 		controller.nextGeneration();
