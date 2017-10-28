@@ -10,8 +10,7 @@ public class Parity_Experiment_2_1 {
 	public static void main(String[] args) {
 		controller.createGame(200, Datastructure.ARRAY, 1, Neighborhood.VONNEUMANN, 2, 100);
 		setStartConfiguration();
-		controller.drawGrid();
-		controller.nextGeneration();
+		controller.evolve();
 	}
 
 	public static void setStartConfiguration() {

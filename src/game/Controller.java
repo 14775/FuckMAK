@@ -1,5 +1,6 @@
 package game;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +9,13 @@ import breakconditions.MaxTurnsBreakCondition;
 import breakconditions.SameGridBreakCondition;
 import grid.types.Grid;
 import grid.types.GridFactory;
+import log.Log;
 import rules.GameOfLifeRules;
 import rules.ParityModelRules;
 import settings.Datastructure;
+import settings.LogType;
 import settings.Neighborhood;
+import timer.TimeControl;
 
 public class Controller {
 
@@ -35,6 +39,9 @@ public class Controller {
 
 	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType,
 			int breakCondition) {
+		if (!TimeControl.getRunning()) {
+			TimeControl.startTimer();
+		}
 		GridFactory factory = new GridFactory();
 		this.dimension = dimension;
 		this.grid = factory.createGrid(gridType, dimension, cellType);
@@ -56,18 +63,33 @@ public class Controller {
 
 	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType, int breakCondition,
 			int maxTurns) {
+		TimeControl.startTimer();
 		this.maxTurns = maxTurns;
 		this.createGame(dimension, gridType, rules, cellType, breakCondition);
 	}
 
+	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType, int breakCondition,
+			int maxTurns, LogType logType) {
+		TimeControl.startTimer();
+		Log.initLog(logType, rules, gridType, dimension, cellType);
+		this.maxTurns = maxTurns;
+		this.createGame(dimension, gridType, rules, cellType, breakCondition);
+	}
+
+	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType, int breakCondition,
+			LogType logType) {
+		TimeControl.startTimer();
+		Log.initLog(logType, rules, gridType, dimension, cellType);
+		this.createGame(dimension, gridType, rules, cellType, breakCondition);
+	}
+
 	public void drawGrid() {
-		System.out.print("### (" + generationNumber + ")");
-		System.out.println();
+		Log.append("\n### (" + generationNumber + ")" + "\n");
 		for (int row = 0; row < grid.getGridDimension(); row++) {
 			for (int col = 0; col < grid.getGridDimension(); col++) {
-				System.out.print(grid.getCell(row, col).isAlive() ? '1' : '0');
+				Log.append(String.valueOf(grid.getCell(row, col).isAlive() ? '1' : '0'));
 			}
-			System.out.println();
+			Log.append("\n");
 		}
 
 	}
@@ -84,6 +106,13 @@ public class Controller {
 
 			grid = newGrid;
 
+		}
+		TimeControl.stopTimer();
+		try {
+			Log.endLog();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
