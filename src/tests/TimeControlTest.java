@@ -2,6 +2,9 @@ package tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.mockito.Mockito.*;
+
+import timer.TimeControl;
 
 import org.junit.Test;
 
@@ -12,14 +15,14 @@ public class TimeControlTest {
 	 */
 	@Test
 	public void millisecondsConverterTest() {
+		TimeControl timer = mock(TimeControl.class);
 		final long millisecondsExample = 11567834;
 		String result = "";
 
-		result = timer.TimeControl.millisecondsConverter(millisecondsExample);
+		result = timer.millisecondsConverter(millisecondsExample);
 
 		assertEquals(result, "03:12:47");
 		assertNotEquals(result, 11567834);
 
 	}
-
 }
