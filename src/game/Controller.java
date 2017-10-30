@@ -68,7 +68,7 @@ public class Controller {
 	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType, int breakCondition,
 			int maxTurns) {
 		TimeControl.startTimer();
-		this.maxTurns = maxTurns;
+		this.maxTurns = maxTurns + 1;
 		this.createGame(dimension, gridType, rules, cellType, breakCondition);
 	}
 
@@ -76,7 +76,7 @@ public class Controller {
 			int maxTurns, LogType logType) {
 		TimeControl.startTimer();
 		Log.initLog(logType, rules, gridType, dimension, cellType);
-		this.maxTurns = maxTurns;
+		this.maxTurns = maxTurns + 1;
 		this.createGame(dimension, gridType, rules, cellType, breakCondition);
 	}
 

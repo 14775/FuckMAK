@@ -9,7 +9,7 @@ public class Parity_Experiment_1_1 {
 	static Controller controller = new Controller();
 
 	public static void main(String[] args) {
-		controller.createGame(400, Datastructure.ARRAY, 1, Neighborhood.VONNEUMANN, 2, 100, LogType.SAVETOFILE);
+		controller.createGame(400, Datastructure.ARRAY, 1, Neighborhood.VONNEUMANN, 0, 100, LogType.SAVETOFILE);
 		setStartConfiguration();
 		controller.evolve();
 	}
