@@ -2,13 +2,14 @@ package gameModes;
 
 import game.Controller;
 import settings.Datastructure;
+import settings.LogType;
 import settings.Neighborhood;
 
 public class GameOfLife_Experiment_2_1 {
 	static Controller controller = new Controller();
 
 	public static void main(String[] args) {
-		controller.createGame(100, Datastructure.ARRAY, 0, Neighborhood.MOORE, 0, 100);
+		controller.createGame(100, Datastructure.ARRAY, 0, Neighborhood.MOORE, 0, 100, LogType.SAVETOFILE);
 		setStartConfiguration();
 		controller.evolve();
 	}

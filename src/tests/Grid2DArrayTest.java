@@ -24,8 +24,8 @@ public class Grid2DArrayTest {
 	}
 
 	/*
-	 * tests grid initialization and method getGridLength() getGridLenght() should
-	 * return dimension
+	 * tests grid initialization and method getGridLength() getGridLenght()
+	 * should return dimension
 	 */
 	@Test
 	public void dimensioncheck() {
