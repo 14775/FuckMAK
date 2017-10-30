@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
-public class TimerControlTest {
+public class TimeControlTest {
 
 	/*
 	 * tests the time converter (milliseconds into the format hh:mm:ss)
