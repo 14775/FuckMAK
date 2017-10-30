@@ -4,7 +4,7 @@ import settings.Datastructure;
 import settings.Neighborhood;
 
 /*
- * 
+ * creates a specific grid, constructor is called by controller.
  */
 public class GridFactory {
 	/*
