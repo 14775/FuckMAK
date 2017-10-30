@@ -40,7 +40,6 @@ public class GameOfLife_Experiment_1_2 {
 		controller.getGrid().getCell(23, 22).live();
 		controller.getGrid().getCell(23, 23).live();
 
-		controller.drawGrid();
 	}
 
 }

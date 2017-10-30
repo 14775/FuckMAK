@@ -31,6 +31,6 @@ public class Parity_Experiment_2_1 {
 				lives = !lives;
 			}
 		}
-		controller.drawGrid();
+
 	}
 }

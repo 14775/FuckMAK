@@ -62,6 +62,7 @@ public class Controller {
 			breakConditions.add(new SameGridBreakCondition());
 			breakConditions.add(new MaxTurnsBreakCondition(maxTurns));
 		}
+
 	}
 
 	public void createGame(int dimension, Datastructure gridType, int rules, Neighborhood cellType, int breakCondition,
@@ -94,11 +95,17 @@ public class Controller {
 			}
 			Log.append("\n");
 		}
+		increaseGenerationNumber();
 
+	}
+
+	public void increaseGenerationNumber() {
+		this.generationNumber++;
 	}
 
 	public void evolve() {
 		boolean mustBreak = false;
+		// drawGrid();
 
 		while (!mustBreak) {
 			nextGeneration();
@@ -133,7 +140,6 @@ public class Controller {
 			}
 
 		}
-		generationNumber++;
 		drawGrid();
 	}
 

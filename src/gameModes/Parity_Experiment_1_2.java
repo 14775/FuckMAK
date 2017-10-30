@@ -22,6 +22,5 @@ public class Parity_Experiment_1_2 {
 		controller.getGrid().getCell(cellpos + 1, cellpos).live();
 		controller.getGrid().getCell(cellpos + 1, cellpos + 1).live();
 
-		controller.drawGrid();
 	}
 }

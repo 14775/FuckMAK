@@ -32,6 +32,6 @@ public class GameOfLife_Experiment_2_2 {
 				lives = !lives;
 			}
 		}
-		controller.drawGrid();
+
 	}
 }

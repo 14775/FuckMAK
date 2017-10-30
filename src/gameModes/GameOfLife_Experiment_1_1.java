@@ -11,7 +11,6 @@ public class GameOfLife_Experiment_1_1 {
 	public static void main(String[] args) {
 		controller.createGame(40, Datastructure.ARRAY, 0, Neighborhood.MOORE, 2, 100, LogType.SAVETOFILE);
 		setStartConfiguration();
-		// controller.drawGrid();
 		controller.evolve();
 	}
 
@@ -40,7 +39,6 @@ public class GameOfLife_Experiment_1_1 {
 		controller.getGrid().getCell(23, 22).live();
 		controller.getGrid().getCell(23, 23).live();
 
-		controller.drawGrid();
 	}
 
 }
