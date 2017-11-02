@@ -16,7 +16,7 @@ public class Parity_Experiment_1_2 {
 
 	public static void setStartConfiguration() {
 		int cellpos;
-		cellpos = ((controller.getGrid().getGridDimension() - 2) / 2) + 1;
+		cellpos = ((controller.getGrid().getGridDimension() - 2) / 2) - 1;
 		controller.getGrid().getCell(cellpos, cellpos).live();
 		controller.getGrid().getCell(cellpos, cellpos + 1).live();
 		controller.getGrid().getCell(cellpos + 1, cellpos).live();
