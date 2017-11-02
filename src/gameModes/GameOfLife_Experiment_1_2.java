@@ -9,7 +9,7 @@ public class GameOfLife_Experiment_1_2 {
 	static Controller controller = new Controller();
 
 	public static void main(String[] args) {
-		controller.createGame(40, Datastructure.HASHMAP, 0, Neighborhood.MOORE, 2, 100, LogType.SAVETOFILE);
+		controller.createGame(40, Datastructure.HASHMAP, 0, Neighborhood.MOORE, 0, 100, LogType.SAVETOFILE);
 		setStartConfiguration();
 		controller.evolve();
 	}
